@@ -1,7 +1,48 @@
-export default function activeMusic() {
+import React, { useState } from "react";
+import Image from "next/image";
+import styled from "styled-components";
+
+export default function ListenMusic() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.createRef();
+
+  const toggleAudio = () => {
+    const audioElement = audioRef.current;
+
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
+
   return (
-    <div>
-      <h1>Active Music</h1>
-    </div>
+    <>
+      {/* Click to play/stop music */}
+      <Button>
+        <RoundImage
+          src="/assets/images/musicImage/bukizbenimkaderim.jpeg"
+          onClick={toggleAudio}
+          width={60}
+          height={60}
+          alt="music"
+        />
+      </Button>
+      <audio ref={audioRef}>
+        <source src="/assets/music/belki.mp3" type="audio/mpeg" />
+      </audio>
+    </>
   );
 }
+
+const Button = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+`;
+
+const RoundImage = styled(Image)`
+  border-radius: 50%;
+`;
