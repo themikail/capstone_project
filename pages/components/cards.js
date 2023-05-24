@@ -107,16 +107,22 @@ export default function Cards() {
     <Card>
       {posts.map((post) => (
         <div key={post.id}>
-          <PhotoContainer onClick={() => doubleClickHandler(post.id)}>
-            <Photo src={post.Photo} width={100} height={100} alt={post.title} />
-            {post.likePhotos && (
-              <LikeIconImage src="/assets/images/icons/like_fill.png" />
-            )}
-          </PhotoContainer>
-
+          <li>
+            <PhotoContainer onClick={() => doubleClickHandler(post.id)}>
+              <Photo
+                src={post.Photo}
+                width={100}
+                height={100}
+                alt={post.title}
+              />
+              {post.likePhotos && (
+                <LikeIconImage src="/assets/images/icons/like_fill.png" />
+              )}
+            </PhotoContainer>
+          </li>
           <p>{post.content}</p>
-          <div>
-            <IconContainer>
+          <IconContainer>
+            <button>
               <PhotoIcon
                 src="/assets/images/icons/comment.png"
                 width={30}
@@ -124,6 +130,8 @@ export default function Cards() {
                 alt="comment"
                 onClick={() => handleCommentClick(post.id)}
               />
+            </button>
+            <button>
               <PhotoIcon
                 src={
                   post.likeStatus
@@ -135,22 +143,23 @@ export default function Cards() {
                 alt="like"
                 onClick={() => handleLikeClick(post.id)}
               />
-            </IconContainer>
-            {post.isCommentVisible && (
-              <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
-                <textarea
-                  placeholder="Enter your comment"
-                  value={post.comment}
-                  onChange={(event) => handleCommentUpdate(event, post.id)}
-                />
-                <button type="submit">Submit</button>
-              </form>
-            )}
-            {post.comments.map((submittedComment, index) => (
+            </button>
+          </IconContainer>
+          {post.isCommentVisible && (
+            <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
+              <textarea
+                placeholder="Enter your comment"
+                value={post.comment}
+                onChange={(event) => handleCommentUpdate(event, post.id)}
+              />
+              <button type="submit">Submit</button>
+            </form>
+          )}
+          {post.comments.map((submittedComment, index) => (
+            <li key={index}>
               <CommentText key={index}>{submittedComment}</CommentText>
-            ))}
-          </div>
-          <br />
+            </li>
+          ))}
           <hr />
         </div>
       ))}
@@ -160,6 +169,7 @@ export default function Cards() {
 
 const Card = styled.div`
   margin-bottom: 10px;
+  list-style-type: none;
 `;
 
 const PhotoContainer = styled.div`

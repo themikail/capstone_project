@@ -4,8 +4,8 @@ import Cards from "./components/cards";
 
 export default function Feed() {
   return (
-    <h1>
+    <div>
       <Cards />
-    </h1>
+    </div>
   );
 }
