@@ -28,6 +28,7 @@ export default function ListenMusic() {
           width={60}
           height={60}
           alt="music"
+          isPlaying={isPlaying}
         />
       </Button>
       <audio ref={audioRef}>
@@ -45,4 +46,5 @@ const Button = styled.div`
 
 const RoundImage = styled(Image)`
   border-radius: 50%;
+  opacity: ${({ isPlaying }) => (isPlaying ? "1" : "0.5")};
 `;
