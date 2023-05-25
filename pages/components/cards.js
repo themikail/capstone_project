@@ -122,7 +122,7 @@ export default function Cards() {
           </li>
           <p>{post.content}</p>
           <IconContainer>
-            <button>
+            <Button>
               <PhotoIcon
                 src="/assets/images/icons/comment.png"
                 width={30}
@@ -130,8 +130,8 @@ export default function Cards() {
                 alt="comment"
                 onClick={() => handleCommentClick(post.id)}
               />
-            </button>
-            <button>
+            </Button>
+            <Button>
               <PhotoIcon
                 src={
                   post.likeStatus
@@ -143,7 +143,7 @@ export default function Cards() {
                 alt="like"
                 onClick={() => handleLikeClick(post.id)}
               />
-            </button>
+            </Button>
           </IconContainer>
           {post.isCommentVisible && (
             <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
@@ -179,6 +179,11 @@ const PhotoContainer = styled.div`
   padding-top: 100%;
   position: relative;
   overflow: hidden;
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
 `;
 
 const Photo = styled.img`

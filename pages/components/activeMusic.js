@@ -23,7 +23,7 @@ export default function ListenMusic() {
       {/* Click to play/stop music */}
       <Button>
         <RoundImage
-          src="/assets/images/musicImage/bukizbenimkaderim.jpeg"
+          src="/assets/images/musicImage/hotlineBling.jpg"
           onClick={toggleAudio}
           width={60}
           height={60}
@@ -32,7 +32,7 @@ export default function ListenMusic() {
         />
       </Button>
       <audio ref={audioRef}>
-        <source src="/assets/music/belki.mp3" type="audio/mpeg" />
+        <source src="/assets/music/HotlineBling.mp3" type="audio/mpeg" />
       </audio>
     </>
   );
