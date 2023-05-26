@@ -46,5 +46,6 @@ const Button = styled.div`
 
 const RoundImage = styled(Image)`
   border-radius: 50%;
+  object-fit: cover;
   opacity: ${({ isPlaying }) => (isPlaying ? "1" : "0.5")};
 `;
