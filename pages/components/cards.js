@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const dummyPosts = [
@@ -25,7 +24,6 @@ const dummyPosts = [
 
 export default function Cards() {
   const [posts, setPosts] = useState(dummyPosts);
-  const [isCommentVisible, setIsCommentVisible] = useState(false);
 
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
@@ -168,7 +166,8 @@ export default function Cards() {
 }
 
 const Card = styled.div`
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 70px;
   list-style-type: none;
 `;
 
