@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function ListenMusic() {
+export default function ActiveMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.createRef();
 
