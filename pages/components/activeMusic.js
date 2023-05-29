@@ -23,7 +23,7 @@ export default function ActiveMusic() {
       {/* Click to play/stop music */}
       <Button>
         <RoundImage
-          src="/assets/images/musicImage/hotlineBling.jpg"
+          src="/assets/images/musicImage/panda.jpeg"
           onClick={toggleAudio}
           width={60}
           height={60}
@@ -32,7 +32,7 @@ export default function ActiveMusic() {
         />
       </Button>
       <audio ref={audioRef}>
-        <source src="/assets/music/HotlineBling.mp3" type="audio/mpeg" />
+        <source src="/assets/music/panda.mp3" type="audio/mpeg" />
       </audio>
     </>
   );
