@@ -5,24 +5,30 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <NavbarContainer>
-      <Image
-        src={"/assets/images/icons/navbar/home.png"}
-        width={30}
-        height={30}
-        alt="home"
-      />
-      <Image
-        src={"/assets/images/icons/navbar/post.png"}
-        width={30}
-        height={30}
-        alt="home"
-      />
-      <Image
-        src={"/assets/images/icons/navbar/profile.png"}
-        width={30}
-        height={30}
-        alt="home"
-      />
+      <Button>
+        <Image
+          src={"/assets/images/icons/navbar/home.png"}
+          width={30}
+          height={30}
+          alt="home"
+        />
+      </Button>
+      <Button>
+        <Image
+          src={"/assets/images/icons/navbar/post.png"}
+          width={30}
+          height={30}
+          alt="home"
+        />
+      </Button>
+      <Button>
+        <Image
+          src={"/assets/images/icons/navbar/profile.png"}
+          width={30}
+          height={30}
+          alt="home"
+        />
+      </Button>
     </NavbarContainer>
   );
 }
@@ -38,4 +44,9 @@ const NavbarContainer = styled.nav`
   justify-content: space-around;
   padding: 10px;
   z-index: 999;
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
 `;
