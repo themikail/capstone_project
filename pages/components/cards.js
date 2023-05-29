@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const dummyPosts = [
   {
     id: 1,
-    content: "Dies ist der Inhalt des ersten Beitrags.",
+    content: "Dies ist der Inhalt des ersten Beitrags 1 .",
     Photo: "/assets/images/1.jpg",
     comments: [],
   },
@@ -25,7 +24,6 @@ const dummyPosts = [
 
 export default function Cards() {
   const [posts, setPosts] = useState(dummyPosts);
-  const [isCommentVisible, setIsCommentVisible] = useState(false);
 
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
@@ -122,7 +120,7 @@ export default function Cards() {
           </li>
           <p>{post.content}</p>
           <IconContainer>
-            <button>
+            <Button>
               <PhotoIcon
                 src="/assets/images/icons/comment.png"
                 width={30}
@@ -130,8 +128,8 @@ export default function Cards() {
                 alt="comment"
                 onClick={() => handleCommentClick(post.id)}
               />
-            </button>
-            <button>
+            </Button>
+            <Button>
               <PhotoIcon
                 src={
                   post.likeStatus
@@ -143,7 +141,7 @@ export default function Cards() {
                 alt="like"
                 onClick={() => handleLikeClick(post.id)}
               />
-            </button>
+            </Button>
           </IconContainer>
           {post.isCommentVisible && (
             <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
@@ -168,7 +166,8 @@ export default function Cards() {
 }
 
 const Card = styled.div`
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 70px;
   list-style-type: none;
 `;
 
@@ -181,9 +180,14 @@ const PhotoContainer = styled.div`
   overflow: hidden;
 `;
 
+const Button = styled.button`
+  background: transparent;
+  border: none;
+`;
+
 const Photo = styled.img`
   position: absolute;
-  top: 60px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
