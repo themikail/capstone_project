@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -73,6 +74,8 @@ const ButtonText = styled.span`
   margin-left: 40px;
   color: #fff;
 `;
+
+const Button = styled.button``;
 
 const SpotifyLogo = styled.image`
   margin-right: 10px;
