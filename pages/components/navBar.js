@@ -23,8 +23,6 @@ export default function Navbar() {
         height={30}
         alt="home"
       />
-      {/* <NavbarButton icon={RiAddCircleLine} />
-      <NavbarButton icon={RiUserLine} /> */}
     </NavbarContainer>
   );
 }
