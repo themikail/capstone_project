@@ -3,10 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
 import styled, { createGlobalStyle } from "styled-components";
-import SpotifyLoginLogo from "/Users/them/Documents/neuefische/capstone/cap/cap2/capi/capstone_project/public/assets/images/login/spotify/icon4@2x.png";
-import SefoBackground from "/Users/them/Documents/neuefische/capstone/cap/cap2/capi/capstone_project/public/assets/images/login/background/sefo-bg.jpeg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +28,7 @@ export default function Home() {
             </Link>
             <SpotifyLogo>
               <Image
-                src={SpotifyLoginLogo}
+                src="/assets/images/login/spotify/icon4@2x.png"
                 width={45}
                 height={45}
                 alt="Spotify"
@@ -50,7 +47,7 @@ body {
 }`;
 
 const StyledBody = styled.body`
-  background-image: url(${SefoBackground.src});
+  background-image: url("/assets/images/login/background/sefo-bg.jpeg");
   background-size: cover;
   background-position: right;
 `;
