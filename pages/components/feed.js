@@ -1,12 +1,18 @@
 import Cards from "./cards";
 import ActiveMusic from "./activeMusic";
 import Navbar from "./navBar";
+import styled from "styled-components";
+
 export default function Feed() {
   return (
-    <div>
+    <FeedSection>
       <ActiveMusic />
       <Cards />
       <Navbar />
-    </div>
+    </FeedSection>
   );
 }
+
+const FeedSection = styled.div`
+  background-color: #fff;
+`;
