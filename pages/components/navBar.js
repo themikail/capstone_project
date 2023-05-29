@@ -1,20 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  RiNewspaperLine,
-  RiChatSmile2Line,
-  RiUserLine,
-  RiAddCircleLine,
-  RiDiscLine,
-} from "react-icons/ri";
-import NavbarButton from "./style/navBarButton";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
     <NavbarContainer>
-      <NavbarButton icon={RiDiscLine} />
-      <NavbarButton icon={RiAddCircleLine} />
-      <NavbarButton icon={RiUserLine} />
+      <Image
+        src={"/assets/images/icons/navbar/home.png"}
+        width={30}
+        height={30}
+        alt="home"
+      />
+      <Image
+        src={"/assets/images/icons/navbar/post.png"}
+        width={30}
+        height={30}
+        alt="home"
+      />
+      <Image
+        src={"/assets/images/icons/navbar/profile.png"}
+        width={30}
+        height={30}
+        alt="home"
+      />
+      {/* <NavbarButton icon={RiAddCircleLine} />
+      <NavbarButton icon={RiUserLine} /> */}
     </NavbarContainer>
   );
 }
