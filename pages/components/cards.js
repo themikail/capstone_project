@@ -4,7 +4,7 @@ import styled from "styled-components";
 const dummyPosts = [
   {
     id: 1,
-    content: "Dies ist der Inhalt des ersten Beitrags 1 .",
+    content: "Dies ist der Inhalt des ersten Beitrags.",
     Photo: "/assets/images/1.jpg",
     comments: [],
   },
