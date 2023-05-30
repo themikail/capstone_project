@@ -74,6 +74,8 @@ const ButtonText = styled.span`
   color: #fff;
 `;
 
+const Button = styled.button``;
+
 const SpotifyLogo = styled.image`
   margin-right: 10px;
 `;
