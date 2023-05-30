@@ -15,7 +15,9 @@ export default function Home() {
       <StyledBody>
         <StyledMain>
           <Title>
-            <h1>Share youre lovely music with neue</h1>
+
+            <h1>Share youre lovely music with Music</h1>
+
           </Title>
           <StyledButton>
             <Link href="/components/feed">
