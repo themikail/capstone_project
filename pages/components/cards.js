@@ -20,6 +20,12 @@ const dummyPosts = [
     Photo: "/assets/images/3.jpg",
     comments: [],
   },
+  {
+    id: 4,
+    content: "Dies ist der Inhalt des vierten Beitrags.",
+    Photo: "/assets/images/3.jpg",
+    comments: [],
+  },
 ];
 
 export default function Cards() {
