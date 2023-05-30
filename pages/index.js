@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
+import Feed from "./components/feed";
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <StyledBody>
-        <StyledMain>
+        <Feed />
+        {/* <StyledMain>
           <Title>
             <h1>Share youre lovely music with Musicc</h1>
           </Title>
@@ -30,7 +32,7 @@ export default function Home() {
               />
             </SpotifyLogo>
           </StyledButton>
-        </StyledMain>
+        </StyledMain> */}
       </StyledBody>
     </>
   );
@@ -38,7 +40,7 @@ export default function Home() {
 
 const StyledMain = styled.div``;
 
-const StyledBody = styled.body`
+const StyledBody = styled.div`
   background-image: url("/assets/images/login/background/sefo-bg.jpeg");
   background-size: cover;
   background-position: right;

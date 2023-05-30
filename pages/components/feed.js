@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
 import Cards from "./cards";
-import ActiveMusic from "./activeMusic";
 import Navbar from "./navBar";
 import styled from "styled-components";
+
+const ActiveMusic = dynamic(() => import("./activeMusic"), {
+  ssr: false,
+});
 
 export default function Feed() {
   return (

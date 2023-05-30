@@ -5,14 +5,14 @@ import Image from "next/image";
 export default function Navbar() {
   return (
     <NavbarContainer>
-      <Button>
+      {/* <Button>
         <Image
           src={"/assets/images/icons/navbar/home.png"}
           width={30}
           height={30}
           alt="home"
         />
-      </Button>
+      </Button> */}
       <Button>
         <Image
           src={"/assets/images/icons/navbar/post.png"}
@@ -21,14 +21,14 @@ export default function Navbar() {
           alt="home"
         />
       </Button>
-      <Button>
+      {/* <Button>
         <Image
           src={"/assets/images/icons/navbar/profile.png"}
           width={30}
           height={30}
           alt="home"
         />
-      </Button>
+      </Button> */}
     </NavbarContainer>
   );
 }
