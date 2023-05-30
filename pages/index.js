@@ -12,7 +12,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GlobalStyle />
       <StyledBody>
         <StyledMain>
           <Title>
@@ -36,11 +35,6 @@ export default function Home() {
     </>
   );
 }
-
-const GlobalStyle = createGlobalStyle`
-body {
-  font-family: "CircularSpotifyTxT-Light";
-}`;
 
 const StyledMain = styled.div``;
 
