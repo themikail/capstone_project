@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import Post from "./post";
 
 export default function ActiveMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
