@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import Post from "./post";
 
 export default function ActiveMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -19,15 +18,12 @@ export default function ActiveMusic() {
     setIsPlaying(!isPlaying);
   };
 
-  const songName = "Panda";
-  const coverPhotoSrc = "/assets/images/musicImage/panda.jpeg";
-
   return (
     <>
       {/* Click to play/stop music */}
       <Button>
         <RoundImage
-          src={coverPhotoSrc}
+          src="/assets/images/musicImage/panda.jpeg"
           onClick={toggleAudio}
           width={60}
           height={60}
@@ -38,7 +34,6 @@ export default function ActiveMusic() {
       <audio ref={audioRef}>
         <source src="/assets/music/panda.mp3" type="audio/mpeg" />
       </audio>
-      <Post songName={songName} coverPhotoSrc={coverPhotoSrc} />
     </>
   );
 }
