@@ -1,12 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
+import ActiveMusic from "./activeMusic";
 
-export default function PostFeed({ songName, coverPhotoSrc }) {
+export default function PostFeed() {
   return (
     <>
       <h2>Modal Content</h2>
-      <div></div>
+      <div>
+        <ActiveMusic />
+      </div>
     </>
   );
 }
