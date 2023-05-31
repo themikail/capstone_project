@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { musicName, musicCover } from "./activeMusic";
 
@@ -9,15 +9,18 @@ export default function PostFeed() {
       <FreeText>
         <p>You are listening: </p>
       </FreeText>
-      <SongInfo>
-        <SongCover src={musicCover} width={60} height={60} alt="music" />
-        <SongDetails>
-          <SongName>{musicName}</SongName>
-        </SongDetails>
-      </SongInfo>
-
-      <PostButton>Post</PostButton>
-
+      <form>
+        <SongInfo>
+          <SongCover src={musicCover} width={60} height={60} alt="music" />
+          <SongDetails>
+            <SongName>{musicName}</SongName>
+          </SongDetails>
+        </SongInfo>
+        <CommentForm>
+          <input placeholder="Enter your comment" />
+        </CommentForm>
+        <PostButton type="submit">Post</PostButton>
+      </form>
       <FreeText>
         <p>Another Songs: </p>
       </FreeText>
@@ -51,4 +54,8 @@ const SongDetails = styled.div`
 
 const SongName = styled.h3`
   margin: 0;
+`;
+
+const CommentForm = styled.div`
+  margin-top: 10px;
 `;
