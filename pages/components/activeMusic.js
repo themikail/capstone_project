@@ -37,7 +37,7 @@ export default function ActiveMusic() {
       <audio ref={audioRef}>
         <source src="/assets/music/panda.mp3" type="audio/mpeg" />
       </audio>
-      <Content songName={songName} coverPhotoSrc={coverPhotoSrc} />
+      <Post songName={songName} coverPhotoSrc={coverPhotoSrc} />
     </>
   );
 }
