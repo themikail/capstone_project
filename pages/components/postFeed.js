@@ -21,6 +21,8 @@ export default function PostFeed() {
       <FreeText>
         <p>Another Songs: </p>
       </FreeText>
+
+      <PostButton>Post</PostButton>
     </>
   );
 }
