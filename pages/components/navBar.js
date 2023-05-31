@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Modal from "./functions/modal";
+import Post from "./post";
 
 export default function Navbar() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <NavbarContainer>
       {/* <Button>
@@ -13,7 +25,7 @@ export default function Navbar() {
           alt="home"
         />
       </Button> */}
-      <Button>
+      <Button onClick={openModal}>
         <Image
           src={"/assets/images/icons/navbar/post.png"}
           width={30}
@@ -21,6 +33,9 @@ export default function Navbar() {
           alt="home"
         />
       </Button>
+      <Modal isOpen={modalIsOpen} closeModal={closeModal}>
+        <Post />
+      </Modal>
       {/* <Button>
         <Image
           src={"/assets/images/icons/navbar/profile.png"}
