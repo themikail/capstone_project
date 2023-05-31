@@ -6,15 +6,32 @@ export default function PostFeed() {
   return (
     <>
       <h2>Post lovely Music </h2>
+      <FreeText>
+        <p>You are listening: </p>
+      </FreeText>
       <SongInfo>
         <SongCover src={musicCover} width={60} height={60} alt="music" />
         <SongDetails>
           <SongName>{musicName}</SongName>
         </SongDetails>
       </SongInfo>
+
+      <PostButton>Post</PostButton>
+
+      <FreeText>
+        <p>Another Songs: </p>
+      </FreeText>
     </>
   );
 }
+
+const FreeText = styled.div`
+  font-weight: 500;
+`;
+
+const PostButton = styled.button`
+  margin-top: 15px;
+`;
 
 const SongInfo = styled.div`
   display: flex;
