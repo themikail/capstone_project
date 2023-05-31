@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import Post from "../Post";
 
 export default function ActiveMusic() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,7 +37,7 @@ export default function ActiveMusic() {
       <audio ref={audioRef}>
         <source src="/assets/music/panda.mp3" type="audio/mpeg" />
       </audio>
-      <Post songName={songName} coverPhotoSrc={coverPhotoSrc} />
+      <Content songName={songName} coverPhotoSrc={coverPhotoSrc} />
     </>
   );
 }
