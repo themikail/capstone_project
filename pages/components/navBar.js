@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Modal from "./functions/modal";
-import Post from "./post";
+import PostFeed from "./postFeed";
 
 export default function Navbar() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function Navbar() {
         />
       </Button>
       <Modal isOpen={modalIsOpen} closeModal={closeModal}>
-        <Post />
+        <PostFeed />
       </Modal>
       {/* <Button>
         <Image

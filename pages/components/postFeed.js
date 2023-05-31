@@ -2,23 +2,11 @@ import React from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function Post({ songName, coverPhotoSrc }) {
+export default function PostFeed({ songName, coverPhotoSrc }) {
   return (
     <>
       <h2>Modal Content</h2>
-      <div>
-        <SongInfo>
-          <SongCover
-            src={coverPhotoSrc}
-            alt="Song Cover"
-            width={200}
-            height={200}
-          />
-          <SongDetails>
-            <SongName>{songName}</SongName>
-          </SongDetails>
-        </SongInfo>
-      </div>
+      <div></div>
     </>
   );
 }
