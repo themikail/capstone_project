@@ -1,15 +1,17 @@
 import React from "react";
-import Image from "next/image";
 import styled from "styled-components";
-import ActiveMusic from "./activeMusic";
+import { musicName, musicCover } from "./activeMusic";
 
 export default function PostFeed() {
   return (
     <>
-      <h2>Modal Content</h2>
-      <div>
-        <ActiveMusic />
-      </div>
+      <h2>Post lovely Music </h2>
+      <SongInfo>
+        <SongCover src={musicCover} width={60} height={60} alt="music" />
+        <SongDetails>
+          <SongName>{musicName}</SongName>
+        </SongDetails>
+      </SongInfo>
     </>
   );
 }
@@ -19,7 +21,7 @@ const SongInfo = styled.div`
   align-items: center;
 `;
 
-const SongCover = styled(Image)`
+const SongCover = styled.img`
   border-radius: 50%;
   object-fit: cover;
 `;
