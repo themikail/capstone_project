@@ -4,7 +4,7 @@ import Image from "next/image";
 import Modal from "./functions/modal";
 import PostFeed from "./postFeed";
 
-export default function Navbar() {
+export default function Navbar({ posts, setPosts }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -34,7 +34,7 @@ export default function Navbar() {
         />
       </Button>
       <Modal isOpen={modalIsOpen} closeModal={closeModal}>
-        <PostFeed />
+        <PostFeed posts={posts} setPosts={setPosts} />
       </Modal>
       {/* <Button>
         <Image

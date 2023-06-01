@@ -2,14 +2,35 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { musicName, musicCover } from "./activeMusic";
 
-export default function PostFeed() {
+export default function PostFeed({ posts, setPosts }) {
+  const handlePostSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    console.log("Data:", data);
+    console.log("FormData:", formData);
+    console.log(event.target.elements.inputComment.value);
+
+    const newPost = {
+      id: posts.length + 1,
+      content: data.inputComment,
+      Photo: musicCover,
+      comments: [],
+    };
+
+    setPosts([newPost, ...posts]);
+    console.log(posts);
+  };
+
   return (
     <>
       <h2>Post lovely Music </h2>
       <FreeText>
         <p>You are listening: </p>
       </FreeText>
-      <form>
+      <form onSubmit={handlePostSubmit}>
         <SongInfo>
           <SongCover src={musicCover} width={60} height={60} alt="music" />
           <SongDetails>
@@ -17,7 +38,11 @@ export default function PostFeed() {
           </SongDetails>
         </SongInfo>
         <CommentForm>
-          <input placeholder="Enter your comment" />
+          <input
+            name="inputComment"
+            id="inputComment"
+            placeholder="Enter your comment"
+          />
         </CommentForm>
         <PostButton type="submit">Post</PostButton>
       </form>

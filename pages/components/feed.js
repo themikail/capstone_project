@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Cards from "./cards";
 import Navbar from "./navBar";
@@ -7,12 +8,35 @@ const ActiveMusic = dynamic(() => import("./activeMusic"), {
   ssr: false,
 });
 
+const dummyPosts = [
+  {
+    id: 1,
+    content: "Dies ist der Inhalt des ersten Beitrags.",
+    Photo: "/assets/images/1.jpg",
+    comments: [],
+  },
+  {
+    id: 2,
+    content: "Dies ist der Inhalt des zweiten Beitrags.",
+    Photo: "/assets/images/2.jpg",
+    comments: [],
+  },
+  {
+    id: 3,
+    content: "Dies ist der Inhalt des dritten Beitrags.",
+    Photo: "/assets/images/3.jpg",
+    comments: [],
+  },
+];
+
 export default function Feed() {
+  const [posts, setPosts] = useState(dummyPosts);
+
   return (
     <FeedSection>
       <ActiveMusic />
-      <Cards />
-      <Navbar />
+      <Cards posts={posts} setPosts={setPosts} />
+      <Navbar posts={posts} setPosts={setPosts} />
     </FeedSection>
   );
 }

@@ -1,36 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const dummyPosts = [
-  {
-    id: 1,
-    content: "Dies ist der Inhalt des ersten Beitrags.",
-    Photo: "/assets/images/1.jpg",
-    comments: [],
-  },
-  {
-    id: 2,
-    content: "Dies ist der Inhalt des zweiten Beitrags.",
-    Photo: "/assets/images/2.jpg",
-    comments: [],
-  },
-  {
-    id: 3,
-    content: "Dies ist der Inhalt des dritten Beitrags.",
-    Photo: "/assets/images/3.jpg",
-    comments: [],
-  },
-  {
-    id: 4,
-    content: "Dies ist der Inhalt des vierten Beitrags.",
-    Photo: "/assets/images/3.jpg",
-    comments: [],
-  },
-];
-
-export default function Cards() {
-  const [posts, setPosts] = useState(dummyPosts);
-
+export default function Cards({ posts, setPosts }) {
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -109,6 +80,7 @@ export default function Cards() {
 
   return (
     <Card>
+      {console.log(posts)}
       {posts.map((post) => (
         <div key={post.id}>
           <li>
