@@ -96,7 +96,9 @@ export default function Cards({ posts, setPosts }) {
               )}
             </PhotoContainer>
           </li>
+          {/* <CommentText> */}
           <p>{post.content}</p>
+          {/* </CommentText> */}
           <IconContainer>
             <Button>
               <PhotoIcon
@@ -121,16 +123,18 @@ export default function Cards({ posts, setPosts }) {
               />
             </Button>
           </IconContainer>
-          {post.isCommentVisible && (
-            <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
-              <textarea
-                placeholder="Enter your comment"
-                value={post.comment}
-                onChange={(event) => handleCommentUpdate(event, post.id)}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          )}
+          <CommentText>
+            {post.isCommentVisible && (
+              <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
+                <textarea
+                  placeholder="Enter your comment"
+                  value={post.comment}
+                  onChange={(event) => handleCommentUpdate(event, post.id)}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            )}
+          </CommentText>
           {post.comments.map((submittedComment, index) => (
             <li key={index}>
               <CommentText key={index}>{submittedComment}</CommentText>
@@ -144,7 +148,6 @@ export default function Cards({ posts, setPosts }) {
 }
 
 const Card = styled.div`
-  padding: 10px;
   margin-bottom: 70px;
   list-style-type: none;
 `;
@@ -183,6 +186,7 @@ const PhotoIcon = styled.img``;
 const CommentText = styled.p`
   margin-top: 10px;
   font-size: 14px;
+  padding: 0px 0px 0px 5px;
 `;
 
 const LikeIconImage = styled.img`
