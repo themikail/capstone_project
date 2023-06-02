@@ -26,12 +26,7 @@ export default function PostFeed({ posts, setPosts, music, imageCover }) {
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>
-          <SongCover
-            src="/assets/images/musicImage/bellki.jpeg"
-            width={60}
-            height={60}
-            alt="music"
-          />
+          <SongCover src={imageCover} width={60} height={60} alt="music" />
           <SongDetails>
             <SongName>{music}</SongName>
           </SongDetails>
