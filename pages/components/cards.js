@@ -1,32 +1,7 @@
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const dummyPosts = [
-  {
-    id: 1,
-    content: "Dies ist der Inhalt des ersten Beitrags.",
-    Photo: "/assets/images/1.jpg",
-    comments: [],
-  },
-  {
-    id: 2,
-    content: "Dies ist der Inhalt des zweiten Beitrags.",
-    Photo: "/assets/images/2.jpg",
-    comments: [],
-  },
-  {
-    id: 3,
-    content: "Dies ist der Inhalt des dritten Beitrags.",
-    Photo: "/assets/images/3.jpg",
-    comments: [],
-  },
-];
-
-export default function Cards() {
-  const [posts, setPosts] = useState(dummyPosts);
-  const [isCommentVisible, setIsCommentVisible] = useState(false);
-
+export default function Cards({ posts, setPosts }) {
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -105,6 +80,7 @@ export default function Cards() {
 
   return (
     <Card>
+      {console.log(posts)}
       {posts.map((post) => (
         <div key={post.id}>
           <li>
@@ -120,9 +96,11 @@ export default function Cards() {
               )}
             </PhotoContainer>
           </li>
+          {/* <CommentText> */}
           <p>{post.content}</p>
+          {/* </CommentText> */}
           <IconContainer>
-            <button>
+            <Button>
               <PhotoIcon
                 src="/assets/images/icons/comment.png"
                 width={30}
@@ -130,8 +108,8 @@ export default function Cards() {
                 alt="comment"
                 onClick={() => handleCommentClick(post.id)}
               />
-            </button>
-            <button>
+            </Button>
+            <Button>
               <PhotoIcon
                 src={
                   post.likeStatus
@@ -143,18 +121,20 @@ export default function Cards() {
                 alt="like"
                 onClick={() => handleLikeClick(post.id)}
               />
-            </button>
+            </Button>
           </IconContainer>
-          {post.isCommentVisible && (
-            <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
-              <textarea
-                placeholder="Enter your comment"
-                value={post.comment}
-                onChange={(event) => handleCommentUpdate(event, post.id)}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          )}
+          <CommentText>
+            {post.isCommentVisible && (
+              <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
+                <textarea
+                  placeholder="Enter your comment"
+                  value={post.comment}
+                  onChange={(event) => handleCommentUpdate(event, post.id)}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            )}
+          </CommentText>
           {post.comments.map((submittedComment, index) => (
             <li key={index}>
               <CommentText key={index}>{submittedComment}</CommentText>
@@ -168,7 +148,7 @@ export default function Cards() {
 }
 
 const Card = styled.div`
-  margin-bottom: 10px;
+  margin-bottom: 70px;
   list-style-type: none;
 `;
 
@@ -181,9 +161,14 @@ const PhotoContainer = styled.div`
   overflow: hidden;
 `;
 
+const Button = styled.button`
+  background: transparent;
+  border: none;
+`;
+
 const Photo = styled.img`
   position: absolute;
-  top: 60px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
@@ -201,6 +186,7 @@ const PhotoIcon = styled.img``;
 const CommentText = styled.p`
   margin-top: 10px;
   font-size: 14px;
+  padding: 0px 0px 0px 5px;
 `;
 
 const LikeIconImage = styled.img`
