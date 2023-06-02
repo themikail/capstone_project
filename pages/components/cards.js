@@ -80,68 +80,69 @@ export default function Cards({ posts, setPosts }) {
 
   return (
     <Card>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <li>
-            <PhotoContainer onClick={() => doubleClickHandler(post.id)}>
-              <Photo
-                src={post.Photo}
-                width={100}
-                height={100}
-                alt={post.title}
-              />
-              {post.likePhotos && (
-                <LikeIconImage src="/assets/images/icons/like_fill.png" />
-              )}
-            </PhotoContainer>
-          </li>
-          {/* <CommentText> */}
-          <p>{post.content}</p>
-          {/* </CommentText> */}
-          <IconContainer>
-            <Button>
-              <PhotoIcon
-                src="/assets/images/icons/comment.png"
-                width={30}
-                height={30}
-                alt="comment"
-                onClick={() => handleCommentClick(post.id)}
-              />
-            </Button>
-            <Button>
-              <PhotoIcon
-                src={
-                  post.likeStatus
-                    ? "/assets/images/icons/like_fill.png"
-                    : "/assets/images/icons/like.png"
-                }
-                width={30}
-                height={30}
-                alt="like"
-                onClick={() => handleLikeClick(post.id)}
-              />
-            </Button>
-          </IconContainer>
-          <CommentText>
-            {post.isCommentVisible && (
-              <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
-                <textarea
-                  placeholder="Enter your comment"
-                  value={post.comment}
-                  onChange={(event) => handleCommentUpdate(event, post.id)}
+      {posts &&
+        posts.map((post) => (
+          <div key={post.id}>
+            <li>
+              <PhotoContainer onClick={() => doubleClickHandler(post.id)}>
+                <Photo
+                  src={post.Photo}
+                  width={100}
+                  height={100}
+                  alt={post.title}
                 />
-                <button type="submit">Submit</button>
-              </form>
-            )}
-          </CommentText>
-          {post.comments.map((submittedComment, index) => (
-            <li key={index}>
-              <CommentText key={index}>{submittedComment}</CommentText>
+                {post.likePhotos && (
+                  <LikeIconImage src="/assets/images/icons/like_fill.png" />
+                )}
+              </PhotoContainer>
             </li>
-          ))}
-          <hr />
-        </div>
-      ))}
+            {/* <CommentText> */}
+            <p>{post.content}</p>
+            {/* </CommentText> */}
+            <IconContainer>
+              <Button>
+                <PhotoIcon
+                  src="/assets/images/icons/comment.png"
+                  width={30}
+                  height={30}
+                  alt="comment"
+                  onClick={() => handleCommentClick(post.id)}
+                />
+              </Button>
+              <Button>
+                <PhotoIcon
+                  src={
+                    post.likeStatus
+                      ? "/assets/images/icons/like_fill.png"
+                      : "/assets/images/icons/like.png"
+                  }
+                  width={30}
+                  height={30}
+                  alt="like"
+                  onClick={() => handleLikeClick(post.id)}
+                />
+              </Button>
+            </IconContainer>
+            <CommentText>
+              {post.isCommentVisible && (
+                <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
+                  <textarea
+                    placeholder="Enter your comment"
+                    value={post.comment}
+                    onChange={(event) => handleCommentUpdate(event, post.id)}
+                  />
+                  <button type="submit">Submit</button>
+                </form>
+              )}
+            </CommentText>
+            {post.comments.map((submittedComment, index) => (
+              <li key={index}>
+                <CommentText key={index}>{submittedComment}</CommentText>
+              </li>
+            ))}
+            <hr />
+          </div>
+        ))}
     </Card>
   );
 }
