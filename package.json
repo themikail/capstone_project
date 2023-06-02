@@ -12188,5 +12188,8 @@
         "url": "https://github.com/sponsors/sindresorhus"
       }
     }
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0"
   }
 }
