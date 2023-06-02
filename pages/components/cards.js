@@ -80,7 +80,6 @@ export default function Cards({ posts, setPosts }) {
 
   return (
     <Card>
-      {console.log(posts)}
       {posts.map((post) => (
         <div key={post.id}>
           <li>
