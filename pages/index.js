@@ -1,11 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import styled, { createGlobalStyle } from "styled-components";
-
-const inter = Inter({ subsets: ["latin"] });
+import Feed from "./components/feed";
 
 export default function Home() {
   return (
@@ -16,11 +13,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GlobalStyle />
       <StyledBody>
-        <main className={`${styles.main} ${inter.className}`}>
+        <Feed />
+        {/* <StyledMain>
           <Title>
-            <h1>Share youre lovely music with Music</h1>
+            <h1>Share youre lovely music with Musicc</h1>
           </Title>
           <StyledButton>
             <Link href="/components/feed">
@@ -35,18 +32,15 @@ export default function Home() {
               />
             </SpotifyLogo>
           </StyledButton>
-        </main>
+        </StyledMain> */}
       </StyledBody>
     </>
   );
 }
 
-const GlobalStyle = createGlobalStyle`
-body {
-  font-family: "CircularSpotifyTxT-Light";
-}`;
+const StyledMain = styled.div``;
 
-const StyledBody = styled.body`
+const StyledBody = styled.div`
   background-image: url("/assets/images/login/background/sefo-bg.jpeg");
   background-size: cover;
   background-position: right;

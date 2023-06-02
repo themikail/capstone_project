@@ -1,30 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const dummyPosts = [
-  {
-    id: 1,
-    content: "Dies ist der Inhalt des ersten Beitrags.",
-    Photo: "/assets/images/1.jpg",
-    comments: [],
-  },
-  {
-    id: 2,
-    content: "Dies ist der Inhalt des zweiten Beitrags.",
-    Photo: "/assets/images/2.jpg",
-    comments: [],
-  },
-  {
-    id: 3,
-    content: "Dies ist der Inhalt des dritten Beitrags.",
-    Photo: "/assets/images/3.jpg",
-    comments: [],
-  },
-];
-
-export default function Cards() {
-  const [posts, setPosts] = useState(dummyPosts);
-
+export default function Cards({ posts, setPosts }) {
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -103,6 +80,7 @@ export default function Cards() {
 
   return (
     <Card>
+      {console.log(posts)}
       {posts.map((post) => (
         <div key={post.id}>
           <li>
@@ -118,7 +96,9 @@ export default function Cards() {
               )}
             </PhotoContainer>
           </li>
+          {/* <CommentText> */}
           <p>{post.content}</p>
+          {/* </CommentText> */}
           <IconContainer>
             <Button>
               <PhotoIcon
@@ -143,16 +123,18 @@ export default function Cards() {
               />
             </Button>
           </IconContainer>
-          {post.isCommentVisible && (
-            <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
-              <textarea
-                placeholder="Enter your comment"
-                value={post.comment}
-                onChange={(event) => handleCommentUpdate(event, post.id)}
-              />
-              <button type="submit">Submit</button>
-            </form>
-          )}
+          <CommentText>
+            {post.isCommentVisible && (
+              <form onSubmit={(event) => handleCommentSubmit(event, post.id)}>
+                <textarea
+                  placeholder="Enter your comment"
+                  value={post.comment}
+                  onChange={(event) => handleCommentUpdate(event, post.id)}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            )}
+          </CommentText>
           {post.comments.map((submittedComment, index) => (
             <li key={index}>
               <CommentText key={index}>{submittedComment}</CommentText>
@@ -166,7 +148,6 @@ export default function Cards() {
 }
 
 const Card = styled.div`
-  padding: 10px;
   margin-bottom: 70px;
   list-style-type: none;
 `;
@@ -205,6 +186,7 @@ const PhotoIcon = styled.img``;
 const CommentText = styled.p`
   margin-top: 10px;
   font-size: 14px;
+  padding: 0px 0px 0px 5px;
 `;
 
 const LikeIconImage = styled.img`
