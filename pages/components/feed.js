@@ -17,7 +17,7 @@ const dummyPosts = [
   },
   {
     id: 2,
-    content: "Dies ist der Inhalt des zweiten Beitrags. 2",
+    content: "Dies ist der Inhalt des zweiten Beitrags 2.",
     Photo: "/assets/images/2.jpg",
     comments: [],
   },
