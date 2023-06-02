@@ -2,28 +2,34 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function ActiveMusic() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = React.createRef();
+export default function ActiveMusic({
+  audioRef,
+  isPlaying,
+  toggleAudio,
+  music,
+  imageCover,
+}) {
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // const audioRef = React.createRef();
 
-  const toggleAudio = () => {
-    const audioElement = audioRef.current;
+  // const toggleAudio = () => {
+  //   const audioElement = audioRef.current;
 
-    if (isPlaying) {
-      audioElement.pause();
-    } else {
-      audioElement.play();
-    }
+  //   if (isPlaying) {
+  //     audioElement.pause();
+  //   } else {
+  //     audioElement.play();
+  //   }
 
-    setIsPlaying(!isPlaying);
-  };
+  //   setIsPlaying(!isPlaying);
+  // };
 
   return (
     <>
       {/* Click to play/stop music */}
       <Button>
         <RoundImage
-          src="/assets/images/musicImage/panda.jpeg"
+          src={imageCover}
           onClick={toggleAudio}
           width={60}
           height={60}
@@ -32,7 +38,7 @@ export default function ActiveMusic() {
         />
       </Button>
       <audio ref={audioRef}>
-        <source src="/assets/music/panda.mp3" type="audio/mpeg" />
+        <source src={music} />
       </audio>
     </>
   );
@@ -49,6 +55,3 @@ const RoundImage = styled(Image)`
   object-fit: cover;
   opacity: ${({ isPlaying }) => (isPlaying ? "1" : "0.5")};
 `;
-
-export const musicName = "Panda";
-export const musicCover = "/assets/images/musicImage/panda.jpeg";

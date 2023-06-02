@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import Cards from "./cards";
 import Navbar from "./navBar";
 import styled from "styled-components";
-
-const ActiveMusic = dynamic(() => import("./activeMusic"), {
-  ssr: false,
-});
+import ActiveMusic from "./activeMusic";
 
 const dummyPosts = [
   {
@@ -31,10 +27,33 @@ const dummyPosts = [
 
 export default function Feed() {
   const [posts, setPosts] = useState(dummyPosts);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.createRef();
+
+  const toggleAudio = () => {
+    const audioElement = audioRef.current;
+
+    if (isPlaying) {
+      audioElement.pause();
+    } else {
+      audioElement.play();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
+
+  const music = "/assets/music/belki.mp3";
+  const imageCover = "/assets/images/musicImage/bellki.jpeg";
 
   return (
     <FeedSection>
-      <ActiveMusic />
+      <ActiveMusic
+        audioRef={audioRef}
+        isPlaying={isPlaying}
+        toggleAudio={toggleAudio}
+        music={music}
+        imageCover={imageCover}
+      />
       <Cards posts={posts} setPosts={setPosts} />
       <Navbar posts={posts} setPosts={setPosts} />
     </FeedSection>
