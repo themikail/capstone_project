@@ -9,10 +9,6 @@ export default function PostFeed({ posts, setPosts }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    // console.log("Data:", data);
-    // console.log("FormData:", formData);
-    // console.log(event.target.elements.inputComment.value);
-
     const newPost = {
       id: posts.length + 1,
       content: data.inputComment,
@@ -21,7 +17,6 @@ export default function PostFeed({ posts, setPosts }) {
     };
 
     setPosts([newPost, ...posts]);
-    // console.log(posts);
   };
 
   return (
