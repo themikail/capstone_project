@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { musicName, musicCover } from "./activeMusic";
 
-export default function PostFeed({ posts, setPosts }) {
+export default function PostFeed({ posts, setPosts, closeModal }) {
   const handlePostSubmit = (event) => {
     event.preventDefault();
 
@@ -17,6 +17,8 @@ export default function PostFeed({ posts, setPosts }) {
     };
 
     setPosts([newPost, ...posts]);
+
+    closeModal();
   };
 
   return (
