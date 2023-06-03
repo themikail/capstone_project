@@ -4,7 +4,7 @@ import Image from "next/image";
 import Modal from "./functions/modal";
 import PostFeed from "./postFeed";
 
-export default function Navbar({ posts, setPosts, music, imageCover }) {
+export default function Navbar({ posts, setPosts, imageCover, music }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
