@@ -55,3 +55,6 @@ const RoundImage = styled(Image)`
   object-fit: cover;
   opacity: ${({ isPlaying }) => (isPlaying ? "1" : "0.5")};
 `;
+
+export const musicName = "Panda";
+export const musicCover = "/assets/images/musicImage/panda.jpeg";
