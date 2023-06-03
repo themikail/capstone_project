@@ -21,7 +21,7 @@ export default function PostFeed({ posts, setPosts }) {
 
   return (
     <>
-      <h2>Post lovely Music </h2>
+      <h2>Post lovely Music: </h2>
       <FreeText>
         <p>You are listening: </p>
       </FreeText>
