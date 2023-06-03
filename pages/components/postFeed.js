@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { musicName, musicCover } from "./activeMusic";
 
-export default function PostFeed({ posts, setPosts, music, imageCover }) {
+export default function PostFeed({ posts, setPosts }) {
   const handlePostSubmit = (event) => {
     event.preventDefault();
 
@@ -11,7 +12,7 @@ export default function PostFeed({ posts, setPosts, music, imageCover }) {
     const newPost = {
       id: posts.length + 1,
       content: data.inputComment,
-      Photo: imageCover,
+      Photo: musicCover,
       comments: [],
     };
 
@@ -26,9 +27,9 @@ export default function PostFeed({ posts, setPosts, music, imageCover }) {
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>
-          <SongCover src={imageCover} width={60} height={60} alt="music" />
+          <SongCover src={musicCover} width={60} height={60} alt="music" />
           <SongDetails>
-            <SongName>{music}</SongName>
+            <SongName>{musicName}</SongName>
           </SongDetails>
         </SongInfo>
         <CommentForm>
