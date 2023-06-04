@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
+import { useRouter } from "next/router";
 import SpotifyWebApi from "spotify-web-api-js";
 
 const spotifyApi = new SpotifyWebApi();
 
 export default function Login() {
+  const router = useRouter();
+
   const handleLogin = () => {
     const clientId = "a7cfeef84deb42289fa131b3fe9babc2";
     const redirectUri = "http://localhost:3000";
@@ -26,16 +29,23 @@ export default function Login() {
       const accessToken = params.get("access_token");
       const expiresIn = params.get("expires_in");
 
-      // Speichere den Zugriffstoken und andere Informationen im Zustand oder der lokalen Speicherung
-      // für die weitere Verwendung bei der Interaktion mit der Spotify API
+      if (accessToken) {
+        // Speichere den Zugriffstoken und andere Informationen im Zustand oder der lokalen Speicherung
+        // für die weitere Verwendung bei der Interaktion mit der Spotify API
 
-      // Setze den Zugriffstoken für die Spotify-Web-API-Instanz
-      spotifyApi.setAccessToken(accessToken);
+        // Setze den Zugriffstoken für die Spotify-Web-API-Instanz
+        spotifyApi.setAccessToken(accessToken);
 
-      // Führe Anfragen an die Spotify API mit dem zugewiesenen Zugriffstoken durch
-      spotifyApi.getMe().then((response) => {
-        console.log(response);
-      });
+        // Führe Anfragen an die Spotify API mit dem zugewiesenen Zugriffstoken durch
+        spotifyApi.getMe().then((response) => {
+          console.log(response);
+          router.push("/components/feed"); // Redirect to feed page
+        });
+      } else {
+        // Handle authentication failure, display error message here
+        console.log("Authentication failed");
+        // Display error message to the user
+      }
     };
 
     // Überprüfe, ob der Zugriffstoken in der URL vorhanden ist
