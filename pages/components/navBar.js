@@ -39,6 +39,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
           setPosts={setPosts}
           music={music}
           imageCover={imageCover}
+          closeModal={closeModal}
         />
       </Modal>
       {/* <Button>
