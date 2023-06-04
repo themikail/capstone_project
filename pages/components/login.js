@@ -1,16 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styled, { createGlobalStyle } from "styled-components";
+import SpotifyWebApi from "spotify-web-api-js";
+
+const spotifyApi = new SpotifyWebApi();
 
 export default function Login() {
+  const handleLogin = () => {
+    const clientId = "a7cfeef84deb42289fa131b3fe9babc2";
+    const redirectUri = "http://localhost:3000";
+
+    const scopes = ["user-read-private", "user-read-email"];
+
+    const authorizeUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+      "%20"
+    )}&response_type=token`;
+
+    window.location.href = authorizeUrl;
+  };
+
+  useEffect(() => {
+    const handleSpotifyCallback = () => {
+      const params = new URLSearchParams(window.location.hash.substr(1));
+      const accessToken = params.get("access_token");
+      const expiresIn = params.get("expires_in");
+
+      // Speichere den Zugriffstoken und andere Informationen im Zustand oder der lokalen Speicherung
+      // für die weitere Verwendung bei der Interaktion mit der Spotify API
+
+      // Setze den Zugriffstoken für die Spotify-Web-API-Instanz
+      spotifyApi.setAccessToken(accessToken);
+
+      // Führe Anfragen an die Spotify API mit dem zugewiesenen Zugriffstoken durch
+      spotifyApi.getMe().then((response) => {
+        console.log(response);
+      });
+    };
+
+    // Überprüfe, ob der Zugriffstoken in der URL vorhanden ist
+    if (window.location.hash.includes("access_token")) {
+      handleSpotifyCallback();
+    }
+  }, []);
+
   return (
     <StyledBody>
       <StyledMain>
         <Title>
           <h1>Share your lovely music with Musicc</h1>
         </Title>
-        <StyledButton>
+        <StyledButton onClick={handleLogin}>
           <Link href="/components/feed">
             <ButtonText>Login with Spotify</ButtonText>
           </Link>
