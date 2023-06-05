@@ -31,7 +31,6 @@ export default function Login() {
 
       if (accessToken) {
         // Speichere den Zugriffstoken und andere Informationen im Zustand oder der lokalen Speicherung
-        // für die weitere Verwendung bei der Interaktion mit der Spotify API
 
         // Setze den Zugriffstoken für die Spotify-Web-API-Instanz
         spotifyApi.setAccessToken(accessToken);
@@ -42,9 +41,8 @@ export default function Login() {
           router.push("/components/feed"); // Redirect to feed page
         });
       } else {
-        // Handle authentication failure, display error message here
+        // Handle authentication failure
         console.log("Authentication failed");
-        // Display error message to the user
       }
     };
 
