@@ -12191,7 +12191,6 @@
   },
   "dependencies": {
     "next": "^13.4.4",
-    "next-auth": "^4.22.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "spotify-web-api-js": "^1.5.2",
