@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { useRouter } from "next/router";
 import { loginWithSpotify, handleSpotifyCallback } from "../api/spotify";
 
@@ -22,9 +21,7 @@ export default function Login() {
           <h1>Share your lovely music with Musicc</h1>
         </Title>
         <StyledButton onClick={loginWithSpotify}>
-          <Link href="/components/feed">
-            <ButtonText>Login with Spotify</ButtonText>
-          </Link>
+          <ButtonText>Login with Spotify</ButtonText>
           <SpotifyLogo>
             <Image
               src="/assets/images/login/spotify/icon4@2x.png"
