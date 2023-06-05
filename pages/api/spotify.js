@@ -29,7 +29,7 @@ export function handleSpotifyCallback() {
     // Führe Anfragen an die Spotify API mit dem zugewiesenen Zugriffstoken durch
     spotifyApi.getMe().then((response) => {
       console.log(response);
-      router.push("/components/feed"); // Redirect to feed page
+      //   router.push("/components/feed"); // Redirect to feed page
     });
   } else {
     // Handle authentication failure

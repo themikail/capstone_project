@@ -11,6 +11,7 @@ export default function Login() {
     // Überprüfe, ob der Zugriffstoken in der URL vorhanden ist
     if (window.location.hash.includes("access_token")) {
       handleSpotifyCallback();
+      router.push("/components/feed"); // Redirect to feed page
     }
   }, []);
 
