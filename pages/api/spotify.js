@@ -21,7 +21,7 @@ export function handleSpotifyCallback() {
   const expiresIn = params.get("expires_in");
 
   if (accessToken) {
-    // Speichere den Zugriffstoken und andere Informationen im Zustand oder der lokalen Speicherung
+    // Speichere den Zugriffstoken
 
     // Setze den Zugriffstoken für die Spotify-Web-API-Instanz
     spotifyApi.setAccessToken(accessToken);
