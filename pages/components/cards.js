@@ -287,7 +287,7 @@ const DropdownButton = styled.button`
   cursor: pointer;
 `;
 
-const DropdownContent = styled.div`
+const DropdownContent = styled.li`
   display: none;
   position: absolute;
   min-width: 80px;
@@ -304,7 +304,7 @@ const DropdownItem = styled.button`
   width: 70%;
   margin-left: 35px;
 `;
-const DropdownContainer = styled.div`
+const DropdownContainer = styled.ul`
   position: relative;
   display: inline-block;
 
