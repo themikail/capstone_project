@@ -43,11 +43,6 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
         </CommentForm>
         <PostButton type="submit">Post</PostButton>
       </form>
-      <FreeText>
-        <p>Another Songs: </p>
-      </FreeText>
-
-      <PostButton>Post</PostButton>
     </>
   );
 }
