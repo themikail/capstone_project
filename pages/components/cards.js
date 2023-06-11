@@ -126,7 +126,7 @@ export default function Cards({ posts, setPosts }) {
                 />
               </DropdownButton>
               <DropdownContent>
-                <DropdownItem onClick={() => handleContentEdit(post.id)}>
+                <DropdownItem edit onClick={() => handleContentEdit(post.id)}>
                   <Image
                     src="/assets/images/icons/edit.png"
                     width={20}
@@ -134,7 +134,10 @@ export default function Cards({ posts, setPosts }) {
                     alt="editPost"
                   />
                 </DropdownItem>
-                <DropdownItem onClick={() => handleDeletePost(post.id)}>
+                <DropdownItem
+                  deleteItem
+                  onClick={() => handleDeletePost(post.id)}
+                >
                   <Image
                     src="/assets/images/icons/trash.png"
                     width={20}
@@ -270,14 +273,17 @@ const LikeIconImage = styled.img`
 `;
 
 const DropdownButton = styled.button`
-  background-color: transparent;
-  margin-left: 10px;
-  padding: 8px;
-  border: none;
+  background-color: ${({ variant }) =>
+    variant === "edit" ? "#fff" : "transparent"};
+  border-width: 0px;
+  padding: 12px 16px;
+  display: block;
   cursor: pointer;
+  width: 70%;
+  margin-left: 35px;
 `;
 
-const DropdownContent = styled.div`
+const DropdownContent = styled.li`
   display: none;
   position: absolute;
   min-width: 80px;
@@ -293,8 +299,11 @@ const DropdownItem = styled.button`
   cursor: pointer;
   width: 70%;
   margin-left: 35px;
+  ${({ edit }) => edit && `color: blue;`}
+  ${({ deleteItem }) => deleteItem && `color: red;`}
 `;
-const DropdownContainer = styled.div`
+
+const DropdownContainer = styled.ul`
   position: relative;
   display: inline-block;
 
