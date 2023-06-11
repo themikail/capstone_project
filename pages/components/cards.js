@@ -3,6 +3,9 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Cards({ posts, setPosts }) {
+  const [editContent, setEditContent] = useState("");
+  const [editPostId, setEditPostId] = useState(null);
+
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -79,41 +82,33 @@ export default function Cards({ posts, setPosts }) {
     }, 1000);
   };
 
-  // Edit comment
-  const handleEditComment = (postId) => {
-    const updatedPosts = posts.map((post) => {
-      if (post.id === postId) {
-        return {
-          ...post,
-          isEditing: true,
-          editedContent: post.content,
-        };
-      }
-      return post;
-    });
+  // Delete post
+  const handleDeletePost = (postId) => {
+    const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
   };
 
-  // Save edited comment
-  const handleSaveComment = (event, postId) => {
+  // Edit post content
+  const handleContentEdit = (postId, content) => {
+    setEditContent(content);
+    setEditPostId(postId);
+  };
+
+  // Update post content
+  const handleContentUpdate = (event, postId) => {
     event.preventDefault();
     const updatedPosts = posts.map((post) => {
       if (post.id === postId) {
         return {
           ...post,
-          isEditing: false,
-          content: post.editedContent,
+          content: editContent,
         };
       }
       return post;
     });
     setPosts(updatedPosts);
-  };
-
-  // Delete post
-  const handleDeletePost = (postId) => {
-    const updatedPosts = posts.filter((post) => post.id !== postId);
-    setPosts(updatedPosts);
+    setEditContent("");
+    setEditPostId(null);
   };
 
   return (
@@ -131,7 +126,7 @@ export default function Cards({ posts, setPosts }) {
                 />
               </DropdownButton>
               <DropdownContent>
-                <DropdownItem onClick={() => handleEditComment(post.id)}>
+                <DropdownItem onClick={() => handleContentEdit(post.id)}>
                   <Image
                     src="/assets/images/icons/edit.png"
                     width={20}
@@ -162,7 +157,20 @@ export default function Cards({ posts, setPosts }) {
                 )}
               </PhotoContainer>
             </li>
-            <p>{post.content}</p>
+            {editPostId === post.id ? (
+              <form onSubmit={(event) => handleContentUpdate(event, post.id)}>
+                <input
+                  placeholder="Add a new Content"
+                  type="text"
+                  name="editInput"
+                  value={editContent}
+                  onChange={(event) => setEditContent(event.target.value)}
+                />
+                <button type="submit">Save</button>
+              </form>
+            ) : (
+              <p>{post.content}</p>
+            )}
             <IconContainer>
               <Button>
                 <PhotoIcon
@@ -196,24 +204,6 @@ export default function Cards({ posts, setPosts }) {
                     onChange={(event) => handleCommentUpdate(event, post.id)}
                   />
                   <button type="submit">Submit</button>
-                </form>
-              )}
-              {post.isEditing && (
-                <form onSubmit={(event) => handleSaveComment(event, post.id)}>
-                  <textarea
-                    placeholder="Edit your comment"
-                    value={post.editedContent}
-                    onChange={(event) =>
-                      setPosts(
-                        posts.map((p) =>
-                          p.id === post.id
-                            ? { ...p, editedContent: event.target.value }
-                            : p
-                        )
-                      )
-                    }
-                  />
-                  <button type="submit">Save</button>
                 </form>
               )}
             </CommentText>
