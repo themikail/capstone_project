@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import styled from "styled-components";
 
 export default function Cards({ posts, setPosts }) {
+  const [editContent, setEditContent] = useState("");
+  const [editPostId, setEditPostId] = useState(null);
+
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -78,11 +82,71 @@ export default function Cards({ posts, setPosts }) {
     }, 1000);
   };
 
+  // Delete post
+  const handleDeletePost = (postId) => {
+    const updatedPosts = posts.filter((post) => post.id !== postId);
+    setPosts(updatedPosts);
+  };
+
+  // Edit post content
+  const handleContentEdit = (postId, content) => {
+    setEditContent(content);
+    setEditPostId(postId);
+  };
+
+  // Update post content
+  const handleContentUpdate = (event, postId) => {
+    event.preventDefault();
+    const updatedPosts = posts.map((post) => {
+      if (post.id === postId) {
+        return {
+          ...post,
+          content: editContent,
+        };
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+    setEditContent("");
+    setEditPostId(null);
+  };
+
   return (
     <Card>
       {posts &&
         posts.map((post) => (
           <div key={post.id}>
+            <DropdownContainer>
+              <DropdownButton>
+                <Image
+                  src="/assets/images/icons/dots.png"
+                  width={20}
+                  height={20}
+                  alt="dots"
+                />
+              </DropdownButton>
+              <DropdownContent>
+                <DropdownButton edit onClick={() => handleContentEdit(post.id)}>
+                  <Image
+                    src="/assets/images/icons/edit.png"
+                    width={20}
+                    height={20}
+                    alt="editPost"
+                  />
+                </DropdownButton>
+                <DropdownButton
+                  deleteItem
+                  onClick={() => handleDeletePost(post.id)}
+                >
+                  <Image
+                    src="/assets/images/icons/trash.png"
+                    width={20}
+                    height={20}
+                    alt="trashPost"
+                  />
+                </DropdownButton>
+              </DropdownContent>
+            </DropdownContainer>
             <li>
               <PhotoContainer onClick={() => doubleClickHandler(post.id)}>
                 <Photo
@@ -96,9 +160,20 @@ export default function Cards({ posts, setPosts }) {
                 )}
               </PhotoContainer>
             </li>
-            {/* <CommentText> */}
-            <p>{post.content}</p>
-            {/* </CommentText> */}
+            {editPostId === post.id ? (
+              <form onSubmit={(event) => handleContentUpdate(event, post.id)}>
+                <input
+                  placeholder="Add a new Content"
+                  type="text"
+                  name="editInput"
+                  value={editContent}
+                  onChange={(event) => setEditContent(event.target.value)}
+                />
+                <button type="submit">Save</button>
+              </form>
+            ) : (
+              <p>{post.content}</p>
+            )}
             <IconContainer>
               <Button>
                 <PhotoIcon
@@ -140,6 +215,7 @@ export default function Cards({ posts, setPosts }) {
                 <CommentText key={index}>{submittedComment}</CommentText>
               </li>
             ))}
+
             <hr />
           </div>
         ))}
@@ -194,4 +270,31 @@ const LikeIconImage = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+
+const DropdownContent = styled.li`
+  display: none;
+  position: absolute;
+  min-width: 80px;
+  z-index: 1;
+  right: 0;
+`;
+
+const DropdownButton = styled.button`
+  background-color: #fff;
+  border-width: 0px;
+  padding: 12px 16px;
+  display: block;
+  cursor: pointer;
+  width: 70%;
+  margin-left: 35px;
+`;
+
+const DropdownContainer = styled.ul`
+  position: relative;
+  display: inline-block;
+
+  &:hover ${DropdownContent} {
+    display: block;
+  }
 `;
