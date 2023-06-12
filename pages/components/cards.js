@@ -256,7 +256,7 @@ export default function Cards({ posts, setPosts }) {
   );
 }
 
-const Card = styled.span`
+const Card = styled.div`
   margin-bottom: 70px;
   list-style-type: none;
 `;
