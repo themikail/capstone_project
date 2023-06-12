@@ -126,15 +126,15 @@ export default function Cards({ posts, setPosts }) {
                 />
               </DropdownButton>
               <DropdownContent>
-                <DropdownItem edit onClick={() => handleContentEdit(post.id)}>
+                <DropdownButton edit onClick={() => handleContentEdit(post.id)}>
                   <Image
                     src="/assets/images/icons/edit.png"
                     width={20}
                     height={20}
                     alt="editPost"
                   />
-                </DropdownItem>
-                <DropdownItem
+                </DropdownButton>
+                <DropdownButton
                   deleteItem
                   onClick={() => handleDeletePost(post.id)}
                 >
@@ -144,7 +144,7 @@ export default function Cards({ posts, setPosts }) {
                     height={20}
                     alt="trashPost"
                   />
-                </DropdownItem>
+                </DropdownButton>
               </DropdownContent>
             </DropdownContainer>
             <li>
@@ -272,17 +272,6 @@ const LikeIconImage = styled.img`
   transform: translate(-50%, -50%);
 `;
 
-const DropdownButton = styled.button`
-  background-color: ${({ variant }) =>
-    variant === "edit" ? "#fff" : "transparent"};
-  border-width: 0px;
-  padding: 12px 16px;
-  display: block;
-  cursor: pointer;
-  width: 70%;
-  margin-left: 35px;
-`;
-
 const DropdownContent = styled.li`
   display: none;
   position: absolute;
@@ -291,7 +280,7 @@ const DropdownContent = styled.li`
   right: 0;
 `;
 
-const DropdownItem = styled.button`
+const DropdownButton = styled.button`
   background-color: #fff;
   border-width: 0px;
   padding: 12px 16px;
@@ -299,8 +288,6 @@ const DropdownItem = styled.button`
   cursor: pointer;
   width: 70%;
   margin-left: 35px;
-  ${({ edit }) => edit && `color: blue;`}
-  ${({ deleteItem }) => deleteItem && `color: red;`}
 `;
 
 const DropdownContainer = styled.ul`
