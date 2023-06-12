@@ -273,14 +273,14 @@ const CountTextContainer = styled.div`
   align-items: center;
 `;
 
-const CommentCount = styled.div`
+const CommentCount = styled.p`
   margin-right: 20px;
   margin-left: 68px;
   font-size: 10px;
   opacity: ${(props) => (props.isZero ? "0.2" : "1")};
 `;
 
-const LikeCount = styled.div`
+const LikeCount = styled.p`
   margin-left: auto;
   margin-right: 68px;
   font-size: 10px;
