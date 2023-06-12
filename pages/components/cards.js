@@ -221,27 +221,29 @@ export default function Cards({ posts, setPosts }) {
                     value={post.comment}
                     onChange={(event) => handleCommentUpdate(event, post.id)}
                   />
-                  <button type="submit">Submit</button>
+                  <button type="submit">Posten</button>
                 </form>
               )}
-              {post.isEditing && (
-                <form onSubmit={(event) => handleSaveComment(event, post.id)}>
-                  <textarea
-                    placeholder="Edit your comment"
-                    value={post.editedContent}
-                    onChange={(event) =>
-                      setPosts(
-                        posts.map((p) =>
-                          p.id === post.id
-                            ? { ...p, editedContent: event.target.value }
-                            : p
+              <EditContent>
+                {post.isEditing && (
+                  <form onSubmit={(event) => handleSaveComment(event, post.id)}>
+                    <textarea
+                      placeholder="Edit your comment"
+                      value={post.editedContent}
+                      onChange={(event) =>
+                        setPosts(
+                          posts.map((p) =>
+                            p.id === post.id
+                              ? { ...p, editedContent: event.target.value }
+                              : p
+                          )
                         )
-                      )
-                    }
-                  />
-                  <button type="submit">Save</button>
-                </form>
-              )}
+                      }
+                    />
+                    <button type="submit">Save</button>
+                  </form>
+                )}
+              </EditContent>
             </CommentText>
             {post.comments.map((submittedComment, index) => (
               <li key={index}>
@@ -286,6 +288,8 @@ const LikeCount = styled.p`
   font-size: 10px;
   opacity: ${(props) => (props.isZero ? "0.2" : "1")};
 `;
+
+const EditContent = styled.p``;
 
 const PhotoContainer = styled.div`
   display: flex;
