@@ -228,7 +228,7 @@ export default function Cards({ posts, setPosts }) {
                 {post.isEditing && (
                   <form onSubmit={(event) => handleSaveComment(event, post.id)}>
                     <textarea
-                      placeholder="Edit your comment"
+                      label="Edit"
                       value={post.editedContent}
                       onChange={(event) =>
                         setPosts(
