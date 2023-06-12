@@ -147,7 +147,10 @@ export default function Cards({ posts, setPosts }) {
                 />
               </DropdownButton>
               <DropdownContent>
-                <DropdownButton onClick={() => handleEditComment(post.id)}>
+                <DropdownButton
+                  type="button"
+                  onClick={() => handleEditComment(post.id)}
+                >
                   <Image
                     src="/assets/images/icons/edit.png"
                     width={20}
@@ -155,7 +158,10 @@ export default function Cards({ posts, setPosts }) {
                     alt="editPost"
                   />
                 </DropdownButton>
-                <DropdownButton onClick={() => handleDeletePost(post.id)}>
+                <DropdownButton
+                  type="button"
+                  onClick={() => handleDeletePost(post.id)}
+                >
                   <Image
                     src="/assets/images/icons/trash.png"
                     width={20}
