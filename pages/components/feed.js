@@ -14,18 +14,21 @@ const dummyPosts = [
     content: "Dies ist der Inhalt des ersten Beitrags.",
     Photo: "/assets/images/1.jpg",
     comments: [],
+    likes: 0,
   },
   {
     id: 2,
     content: "Dies ist der Inhalt des zweiten Beitrags2.",
     Photo: "/assets/images/2.jpg",
     comments: [],
+    likes: 0,
   },
   {
     id: 3,
     content: "Dies ist der Inhalt des dritten Beitrags.",
     Photo: "/assets/images/3.jpg",
     comments: [],
+    likes: 0,
   },
 ];
 
