@@ -1,12 +1,31 @@
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
 import Cards from "./cards";
 import Navbar from "./navBar";
 import styled from "styled-components";
+import ActiveMusic from "./activeMusic";
 
-const ActiveMusic = dynamic(() => import("./activeMusic"), {
-  ssr: false,
-});
+const dummyMusic = [
+  {
+    id: 1,
+    Music: "/assets/music/panda.mp3",
+    Title: "Panda",
+    Photo: "/public/assets/images/musicImage/panda.jpeg",
+  },
+
+  {
+    id: 2,
+    Music: "/assets/music/belki.mp3",
+    Title: "Panda",
+    Photo: "/public/assets/images/musicImage/bellki.jpeg",
+  },
+
+  {
+    id: 3,
+    Music: "/assets/music/bukizbenimkaderim.mp3",
+    Title: "Panda",
+    Photo: "/public/assets/images/musicImage/bukizbenimkaderim.jpeg",
+  },
+];
 
 const dummyPosts = [
   {
@@ -34,10 +53,11 @@ const dummyPosts = [
 
 export default function Feed() {
   const [posts, setPosts] = useState(dummyPosts);
+  const [activeMusic, setActiveMusic] = useState(dummyMusic);
 
   return (
     <FeedSection>
-      <ActiveMusic />
+      <ActiveMusic activeMusic={activeMusic} setActiveMusic={setActiveMusic} />
       <Cards posts={posts} setPosts={setPosts} />
       <Navbar posts={posts} setPosts={setPosts} />
     </FeedSection>
