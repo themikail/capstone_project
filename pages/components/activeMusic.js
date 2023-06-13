@@ -4,8 +4,10 @@ import styled from "styled-components";
 
 export default function ActiveMusic({ activeMusic }) {
   const [currentSong, setCurrentSong] = useState(null);
+  const [listenMusic, setListenMusic] = useState("");
 
   const toggleAudio = (song) => {
+    setListenMusic(song);
     if (currentSong === song) {
       // Wenn das aktuelle Lied bereits abgespielt wird, pausiere es
       setCurrentSong(null);

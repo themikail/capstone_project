@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import ActiveMusic from "./activeMusic";
 
 export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
   const handlePostSubmit = (event) => {

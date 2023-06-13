@@ -3,7 +3,6 @@ import Cards from "./cards";
 import Navbar from "./navBar";
 import styled from "styled-components";
 import ActiveMusic from "./activeMusic";
-import PostFeed from "./postFeed";
 
 const dummyMusic = [
   {
@@ -16,14 +15,14 @@ const dummyMusic = [
   {
     id: 2,
     Music: "/assets/music/belki.mp3",
-    Title: "Panda",
+    Title: "Belki",
     Photo: "/assets/images/musicImage/bellki.jpeg",
   },
 
   {
     id: 3,
     Music: "/assets/music/bukizbenimkaderim.mp3",
-    Title: "Panda",
+    Title: "BUK",
     Photo: "/assets/images/musicImage/bukizbenimkaderim.jpeg",
   },
 ];
