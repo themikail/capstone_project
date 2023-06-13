@@ -3,9 +3,6 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Cards({ posts, setPosts }) {
-  const [editContent, setEditContent] = useState("");
-  const [editPostId, setEditPostId] = useState(null);
-
   // to update the comment
   const handleCommentUpdate = (event, postId) => {
     const updatedPosts = posts.map((post) => {
@@ -38,7 +35,7 @@ export default function Cards({ posts, setPosts }) {
   const handleCommentSubmit = (event, postId) => {
     event.preventDefault();
     const updatedPosts = posts.map((post) => {
-      if (post.id === postId) {
+      if (post.id === postId && post.comment && post.comment.trim() !== "") {
         const updatedComments = [...post.comments, post.comment];
         return { ...post, comments: updatedComments, comment: "" };
       }
@@ -51,9 +48,11 @@ export default function Cards({ posts, setPosts }) {
   const handleLikeClick = (postId) => {
     const updatedPosts = posts.map((post) => {
       if (post.id === postId) {
+        const updatedLikes = post.likeStatus ? post.likes - 1 : post.likes + 1;
         return {
           ...post,
           likeStatus: !post.likeStatus,
+          likes: updatedLikes,
         };
       }
       return post;
@@ -82,33 +81,55 @@ export default function Cards({ posts, setPosts }) {
     }, 1000);
   };
 
+  // Edit comment
+  const handleEditComment = (postId) => {
+    const updatedPosts = posts.map((post) => {
+      if (post.id === postId) {
+        return {
+          ...post,
+          isEditing: true,
+          editedContent: post.content,
+        };
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+  };
+
+  // Save edited comment
+  const handleSaveComment = (event, postId) => {
+    event.preventDefault();
+    const updatedPosts = posts.map((post) => {
+      if (post.id === postId) {
+        return {
+          ...post,
+          isEditing: false,
+          content: post.editedContent,
+        };
+      }
+      return post;
+    });
+    setPosts(updatedPosts);
+  };
+
   // Delete post
   const handleDeletePost = (postId) => {
     const updatedPosts = posts.filter((post) => post.id !== postId);
     setPosts(updatedPosts);
   };
 
-  // Edit post content
-  const handleContentEdit = (postId, content) => {
-    setEditContent(content);
-    setEditPostId(postId);
+  const calculateLikeCount = (post) => {
+    if (post && post.likes) {
+      return post.likes;
+    }
+    return 0;
   };
 
-  // Update post content
-  const handleContentUpdate = (event, postId) => {
-    event.preventDefault();
-    const updatedPosts = posts.map((post) => {
-      if (post.id === postId) {
-        return {
-          ...post,
-          content: editContent,
-        };
-      }
-      return post;
-    });
-    setPosts(updatedPosts);
-    setEditContent("");
-    setEditPostId(null);
+  const calculateCommentCount = (post) => {
+    if (post && post.comments) {
+      return post.comments.length;
+    }
+    return 0;
   };
 
   return (
@@ -126,7 +147,10 @@ export default function Cards({ posts, setPosts }) {
                 />
               </DropdownButton>
               <DropdownContent>
-                <DropdownButton edit onClick={() => handleContentEdit(post.id)}>
+                <DropdownButton
+                  type="button"
+                  onClick={() => handleEditComment(post.id)}
+                >
                   <Image
                     src="/assets/images/icons/edit.png"
                     width={20}
@@ -135,7 +159,7 @@ export default function Cards({ posts, setPosts }) {
                   />
                 </DropdownButton>
                 <DropdownButton
-                  deleteItem
+                  type="button"
                   onClick={() => handleDeletePost(post.id)}
                 >
                   <Image
@@ -160,20 +184,17 @@ export default function Cards({ posts, setPosts }) {
                 )}
               </PhotoContainer>
             </li>
-            {editPostId === post.id ? (
-              <form onSubmit={(event) => handleContentUpdate(event, post.id)}>
-                <input
-                  placeholder="Add a new Content"
-                  type="text"
-                  name="editInput"
-                  value={editContent}
-                  onChange={(event) => setEditContent(event.target.value)}
-                />
-                <button type="submit">Save</button>
-              </form>
-            ) : (
-              <p>{post.content}</p>
-            )}
+            <p>{post.content}</p>
+            <CountContainer>
+              <CountTextContainer>
+                <CommentCount isZero={calculateCommentCount(post) === 0}>
+                  {calculateCommentCount(post)}
+                </CommentCount>
+              </CountTextContainer>
+              <LikeCount isZero={calculateLikeCount(post) === 0}>
+                {calculateLikeCount(post)}
+              </LikeCount>
+            </CountContainer>
             <IconContainer>
               <Button>
                 <PhotoIcon
@@ -206,9 +227,29 @@ export default function Cards({ posts, setPosts }) {
                     value={post.comment}
                     onChange={(event) => handleCommentUpdate(event, post.id)}
                   />
-                  <button type="submit">Submit</button>
+                  <button type="submit">Posten</button>
                 </form>
               )}
+              <EditContent>
+                {post.isEditing && (
+                  <form onSubmit={(event) => handleSaveComment(event, post.id)}>
+                    <textarea
+                      label="Edit"
+                      value={post.editedContent}
+                      onChange={(event) =>
+                        setPosts(
+                          posts.map((p) =>
+                            p.id === post.id
+                              ? { ...p, editedContent: event.target.value }
+                              : p
+                          )
+                        )
+                      }
+                    />
+                    <button type="submit">Save</button>
+                  </form>
+                )}
+              </EditContent>
             </CommentText>
             {post.comments.map((submittedComment, index) => (
               <li key={index}>
@@ -227,6 +268,34 @@ const Card = styled.div`
   margin-bottom: 70px;
   list-style-type: none;
 `;
+
+const CountContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+`;
+
+const CountTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const CommentCount = styled.p`
+  margin-right: 20px;
+  margin-left: 68px;
+  font-size: 10px;
+  opacity: ${(props) => (props.isZero ? "0.2" : "1")};
+`;
+
+const LikeCount = styled.p`
+  margin-left: auto;
+  margin-right: 68px;
+  font-size: 10px;
+  opacity: ${(props) => (props.isZero ? "0.2" : "1")};
+`;
+
+const EditContent = styled.p``;
 
 const PhotoContainer = styled.div`
   display: flex;
@@ -272,7 +341,7 @@ const LikeIconImage = styled.img`
   transform: translate(-50%, -50%);
 `;
 
-const DropdownContent = styled.li`
+const DropdownContent = styled.div`
   display: none;
   position: absolute;
   min-width: 80px;
@@ -289,8 +358,7 @@ const DropdownButton = styled.button`
   width: 70%;
   margin-left: 35px;
 `;
-
-const DropdownContainer = styled.ul`
+const DropdownContainer = styled.div`
   position: relative;
   display: inline-block;
 
