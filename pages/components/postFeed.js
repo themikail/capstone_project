@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { musicName, musicCover } from "./activeMusic";
 
-export default function PostFeed({ posts, setPosts, closeModal }) {
+export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
   const handlePostSubmit = (event) => {
     event.preventDefault();
 
@@ -26,14 +25,11 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
     <>
       <h2>Post lovely Music </h2>
       <FreeText>
-        <p>You are listening: {musicName}</p>
+        <p>You are listening: Test</p>
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>
-          <SongCover src={musicCover} width={60} height={60} alt="music" />
-          <SongDetails>
-            <SongName>{musicName}</SongName>
-          </SongDetails>
+          <SongCover src="" width={60} height={60} alt="music" />
         </SongInfo>
         <CommentForm>
           <input
@@ -64,14 +60,6 @@ const SongInfo = styled.div`
 const SongCover = styled.img`
   border-radius: 50%;
   object-fit: cover;
-`;
-
-const SongDetails = styled.div`
-  margin-left: 20px;
-`;
-
-const SongName = styled.h3`
-  margin: 0;
 `;
 
 const CommentForm = styled.div`
