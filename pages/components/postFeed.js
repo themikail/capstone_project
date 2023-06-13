@@ -14,6 +14,7 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
       content: data.inputComment,
       Photo: musicCover,
       comments: [],
+      likes: 0,
     };
 
     setPosts([newPost, ...posts]);
@@ -25,7 +26,7 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
     <>
       <h2>Post lovely Music </h2>
       <FreeText>
-        <p>You are listening: </p>
+        <p>You are listening: {musicName}</p>
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>

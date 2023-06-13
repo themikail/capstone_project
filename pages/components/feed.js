@@ -9,21 +9,21 @@ const dummyMusic = [
     id: 1,
     Music: "/assets/music/panda.mp3",
     Title: "Panda",
-    Photo: "/public/assets/images/musicImage/panda.jpeg",
+    Photo: "/assets/images/musicImage/panda.jpeg",
   },
 
   {
     id: 2,
     Music: "/assets/music/belki.mp3",
     Title: "Panda",
-    Photo: "/public/assets/images/musicImage/bellki.jpeg",
+    Photo: "/assets/images/musicImage/bellki.jpeg",
   },
 
   {
     id: 3,
     Music: "/assets/music/bukizbenimkaderim.mp3",
     Title: "Panda",
-    Photo: "/public/assets/images/musicImage/bukizbenimkaderim.jpeg",
+    Photo: "/assets/images/musicImage/bukizbenimkaderim.jpeg",
   },
 ];
 
