@@ -3,6 +3,7 @@ import Cards from "./cards";
 import Navbar from "./navBar";
 import styled from "styled-components";
 import ActiveMusic from "./activeMusic";
+import PostFeed from "./postFeed";
 
 const dummyMusic = [
   {

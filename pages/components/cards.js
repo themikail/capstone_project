@@ -281,21 +281,21 @@ const CountTextContainer = styled.div`
   align-items: center;
 `;
 
-const CommentCount = styled.p`
+const CommentCount = styled.div`
   margin-right: 20px;
   margin-left: 68px;
   font-size: 10px;
   opacity: ${(props) => (props.isZero ? "0.2" : "1")};
 `;
 
-const LikeCount = styled.p`
+const LikeCount = styled.div`
   margin-left: auto;
   margin-right: 68px;
   font-size: 10px;
   opacity: ${(props) => (props.isZero ? "0.2" : "1")};
 `;
 
-const EditContent = styled.p``;
+const EditContent = styled.div``;
 
 const PhotoContainer = styled.div`
   display: flex;
@@ -328,7 +328,7 @@ const IconContainer = styled.div`
 
 const PhotoIcon = styled.img``;
 
-const CommentText = styled.p`
+const CommentText = styled.div`
   margin-top: 10px;
   font-size: 14px;
   padding: 0px 0px 0px 5px;

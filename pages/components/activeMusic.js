@@ -1,34 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function ActiveMusic({ activeMusic }) {
-  const [currentSong, setCurrentSong] = useState(null);
+export default function ActiveMusic({ activeMusic, setActiveMusic }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef();
 
-  const toggleAudio = (song) => {
-    if (currentSong === song) {
-      // Wenn das aktuelle Lied bereits abgespielt wird, pausiere es
-      setCurrentSong(null);
+  const toggleAudio = () => {
+    const audioElement = audioRef.current;
+
+    if (isPlaying) {
+      audioElement.pause();
     } else {
-      // Andernfalls spiele das angeklickte Lied ab
-      setCurrentSong(song);
+      audioElement.play();
     }
+
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleSetActiveMusic = (music) => {
+    setActiveMusic(music);
+    setIsPlaying(false);
   };
 
   return (
     <Container>
       {activeMusic.map((music) => (
-        <Button key={music.id}>
+        <Button key={music.id} onClick={() => handleSetActiveMusic(music)}>
           <RoundImage
             src={music.Photo}
-            onClick={() => toggleAudio(music)}
             width={60}
             height={60}
             alt="music"
-            isPlaying={currentSong === music}
+            isPlaying={isPlaying && music === activeMusic}
           />
-          {currentSong === music && (
-            <audio autoPlay>
+          {isPlaying && music === activeMusic && (
+            <audio ref={audioRef} autoPlay>
               <source src={music.Music} type="audio/mpeg" />
             </audio>
           )}
