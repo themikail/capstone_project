@@ -12196,6 +12196,8 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "eslint": "^8.41.0"
+    "@swc/core": "^1.3.64",
+    "eslint": "^8.41.0",
+    "swc-loader": "^0.2.3"
   }
 }

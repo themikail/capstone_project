@@ -2,41 +2,47 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function ActiveMusic() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = React.createRef();
+export default function ActiveMusic({ activeMusic }) {
+  const [currentSong, setCurrentSong] = useState(null);
+  const [listenMusic, setListenMusic] = useState("");
 
-  const toggleAudio = () => {
-    const audioElement = audioRef.current;
-
-    if (isPlaying) {
-      audioElement.pause();
+  const toggleAudio = (song) => {
+    setListenMusic(song);
+    if (currentSong === song) {
+      // Wenn das aktuelle Lied bereits abgespielt wird, pausiere es
+      setCurrentSong(null);
     } else {
-      audioElement.play();
+      // Andernfalls spiele das angeklickte Lied ab
+      setCurrentSong(song);
     }
-
-    setIsPlaying(!isPlaying);
   };
 
   return (
-    <>
-      {/* Click to play/stop music */}
-      <Button>
-        <RoundImage
-          src="/assets/images/musicImage/panda.jpeg"
-          onClick={toggleAudio}
-          width={60}
-          height={60}
-          alt="music"
-          isPlaying={isPlaying}
-        />
-      </Button>
-      <audio ref={audioRef}>
-        <source src="/assets/music/panda.mp3" type="audio/mpeg" />
-      </audio>
-    </>
+    <Container>
+      {activeMusic.map((music) => (
+        <Button key={music.id}>
+          <RoundImage
+            src={music.Photo}
+            onClick={() => toggleAudio(music)}
+            width={60}
+            height={60}
+            alt="music"
+            isPlaying={currentSong === music}
+          />
+          {currentSong === music && (
+            <audio autoPlay>
+              <source src={music.Music} type="audio/mpeg" />
+            </audio>
+          )}
+        </Button>
+      ))}
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+`;
 
 const Button = styled.div`
   display: flex;
@@ -49,6 +55,3 @@ const RoundImage = styled(Image)`
   object-fit: cover;
   opacity: ${({ isPlaying }) => (isPlaying ? "1" : "0.5")};
 `;
-
-export const musicName = "Panda";
-export const musicCover = "/assets/images/musicImage/panda.jpeg";
