@@ -26,7 +26,7 @@ export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
     <>
       <h2>Post lovely Music </h2>
       <FreeText>
-        <p>You are listening: Test</p>
+        <p>You are listening:</p>
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>
