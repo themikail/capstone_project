@@ -8,7 +8,7 @@ export default function ProfilePage() {
     <ProfileContainer>
       <Header>
         <Avatar src="/Portrait_Placeholder.png" alt="Avatar" />
-        <Username>username</Username>
+        <Username>mikailgokce</Username>
         <LogoutButton
           type="button"
           onClick={() => {
