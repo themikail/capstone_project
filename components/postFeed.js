@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ActiveMusic from "./activeMusic";
 
-export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
+export default function PostFeed({ posts, setPosts, closeModal }) {
   const handlePostSubmit = (event) => {
     event.preventDefault();
 
@@ -12,7 +12,7 @@ export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
     const newPost = {
       id: posts.length + 1,
       content: data.inputComment,
-      Photo: musicCover,
+      Photo: "../assets/images/musicImage/panda.jpeg",
       comments: [],
       likes: 0,
     };
@@ -26,14 +26,24 @@ export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
     <>
       <h2>Post lovely Music </h2>
       <FreeText>
-        <p>You are listening:</p>
+        <p>
+          You are listening:
+          <br />
+          <br />
+          <strong>Panda</strong>
+        </p>
       </FreeText>
       <form onSubmit={handlePostSubmit}>
         <SongInfo>
-          <SongCover src="" width={60} height={60} alt="music" />
+          <SongCover
+            src="../assets/images/musicImage/panda.jpeg"
+            width={60}
+            height={60}
+            alt="music"
+          />
         </SongInfo>
         <CommentForm>
-          <textarea
+          <input
             name="inputComment"
             id="inputComment"
             placeholder="Enter your comment"

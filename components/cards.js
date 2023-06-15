@@ -331,7 +331,7 @@ const PhotoIcon = styled.img``;
 const CommentText = styled.div`
   margin-top: 10px;
   font-size: 14px;
-  padding: 0px 0px 0px 5px;
+  padding: px 0px 0px 5px;
 `;
 
 const LikeIconImage = styled.img`
