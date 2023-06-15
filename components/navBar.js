@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Modal from "./functions/modal";
 import PostFeed from "./postFeed";
+import Link from "next/link";
 
 export default function Navbar({ posts, setPosts, imageCover, music }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -17,20 +18,22 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
 
   return (
     <NavbarContainer>
-      {/* <Button>
-        <Image
-          src={"/assets/images/icons/navbar/home.png"}
-          width={30}
-          height={30}
-          alt="home"
-        />
-      </Button> */}
+      <Link href="/home">
+        <Button>
+          <Image
+            src={"/assets/images/icons/navbar/home.png"}
+            width={30}
+            height={30}
+            alt="home"
+          />
+        </Button>
+      </Link>
       <Button onClick={openModal}>
         <Image
           src={"/assets/images/icons/navbar/post.png"}
           width={30}
           height={30}
-          alt="home"
+          alt="post"
         />
       </Button>
       <Modal isOpen={modalIsOpen} closeModal={closeModal}>
@@ -42,25 +45,29 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
           closeModal={closeModal}
         />
       </Modal>
-      {/* <Button>
-        <Image
-          src={"/assets/images/icons/navbar/profile.png"}
-          width={30}
-          height={30}
-          alt="home"
-        />
-      </Button> */}
+      <Button>
+        <Link href="../profile">
+          <Image
+            src={"/assets/images/icons/navbar/profile.png"}
+            width={30}
+            height={30}
+            alt="profile"
+          />
+        </Link>
+      </Button>
     </NavbarContainer>
   );
 }
 
 const NavbarContainer = styled.nav`
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #f1f1f1;
+  background-color: #30d5c8;
   display: flex;
   justify-content: space-around;
   padding: 10px;
