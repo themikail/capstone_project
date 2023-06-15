@@ -24,7 +24,7 @@ export default function LandingPage({ providers }) {
           <LoginButton
             type="button"
             onClick={() => {
-              signIn({ callbackUrl: "/startseite" });
+              signIn({ callbackUrl: "/home" });
             }}
           >
             Login with Spotify
@@ -56,6 +56,8 @@ const StyledBody = styled.div`
 `;
 
 const LoginButton = styled.button`
+  font-size: 20px;
+  margin-top: 10px;
   background-color: #18d860;
   color: #fff;
   border-radius: 16px;
