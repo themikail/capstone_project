@@ -140,7 +140,7 @@ export default function Cards({ posts, setPosts }) {
             <DropdownContainer>
               <DropdownButton>
                 <Image
-                  src="/assets/images/icons/dots.png"
+                  src="/assets/images/icons/dotss.png"
                   width={20}
                   height={20}
                   alt="dots"
@@ -163,7 +163,7 @@ export default function Cards({ posts, setPosts }) {
                   onClick={() => handleDeletePost(post.id)}
                 >
                   <Image
-                    src="/assets/images/icons/trash.png"
+                    src="/assets/images/icons/trashh.png"
                     width={20}
                     height={20}
                     alt="trashPost"
