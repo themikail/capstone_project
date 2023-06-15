@@ -60,6 +60,8 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
 }
 
 const NavbarContainer = styled.nav`
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   position: fixed;
   bottom: 0;
   left: 0;
