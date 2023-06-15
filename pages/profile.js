@@ -4,8 +4,6 @@ import Image from "next/image";
 import Navbar from "@/components/navBar";
 
 export default function ProfilePage() {
-  const { data: session } = useSession();
-
   return (
     <ProfileContainer>
       <Header>
@@ -21,22 +19,22 @@ export default function ProfilePage() {
         </LogoutButton>
       </Header>
       <FavoritesSection>
-        <h2>Meine Favoriten</h2>
+        <h2>Your favorites</h2>
         <ImageRow>
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/11.jpg"}
             width={60}
             height={60}
             alt="music"
           />
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/22.jpg"}
             width={60}
             height={60}
             alt="music"
           />
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/33.jpg"}
             width={60}
             height={60}
             alt="music"
@@ -44,39 +42,19 @@ export default function ProfilePage() {
         </ImageRow>
         <ImageRow>
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/44.jpg"}
             width={60}
             height={60}
             alt="music"
           />
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/55.jpg"}
             width={60}
             height={60}
             alt="music"
           />
           <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
-            width={60}
-            height={60}
-            alt="music"
-          />
-        </ImageRow>
-        <ImageRow>
-          <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
-            width={60}
-            height={60}
-            alt="music"
-          />
-          <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
-            width={60}
-            height={60}
-            alt="music"
-          />
-          <RoundImage
-            src={"/assets/images/musicImage/bellki.jpeg"}
+            src={"/assets/images/musicImage/66.jpg"}
             width={60}
             height={60}
             alt="music"

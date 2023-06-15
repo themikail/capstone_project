@@ -24,7 +24,7 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
 
   return (
     <>
-      <h2>Post lovely Music </h2>
+      <h2>Post your favorite music</h2>
       <FreeText>
         <p>
           You are listening:
@@ -46,7 +46,7 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
           <input
             name="inputComment"
             id="inputComment"
-            placeholder="Enter your comment"
+            placeholder="Add a comment"
             autoComplete="off"
           />
         </CommentForm>
