@@ -3,6 +3,7 @@ import Cards from "./cards";
 import Navbar from "./navBar";
 import styled from "styled-components";
 import ActiveMusic from "./activeMusic";
+import { useSession } from "next-auth/react";
 
 const dummyMusic = [
   {
@@ -52,6 +53,8 @@ const dummyPosts = [
 ];
 
 export default function Feed() {
+  const { data: session, status } = useSession();
+  console.log(session);
   const [posts, setPosts] = useState(dummyPosts);
   const [activeMusic, setActiveMusic] = useState(dummyMusic);
 

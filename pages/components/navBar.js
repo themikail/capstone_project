@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Modal from "./functions/modal";
 import PostFeed from "./postFeed";
+import Link from "next/link";
 
 export default function Navbar({ posts, setPosts, imageCover, music }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -42,14 +43,16 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
           closeModal={closeModal}
         />
       </Modal>
-      {/* <Button>
-        <Image
-          src={"/assets/images/icons/navbar/profile.png"}
-          width={30}
-          height={30}
-          alt="home"
-        />
-      </Button> */}
+      <Button>
+        <Link href="../components/profile">
+          <Image
+            src={"/assets/images/icons/navbar/profile.png"}
+            width={30}
+            height={30}
+            alt="home"
+          />
+        </Link>
+      </Button>
     </NavbarContainer>
   );
 }
