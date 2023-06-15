@@ -21,7 +21,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
       <Link href="/home">
         <Button>
           <Image
-            src={"/assets/images/icons/navbar/home.png"}
+            src={"/assets/images/icons/navbar/homee.png"}
             width={30}
             height={30}
             alt="home"
@@ -30,7 +30,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
       </Link>
       <Button onClick={openModal}>
         <Image
-          src={"/assets/images/icons/navbar/post.png"}
+          src="/assets/images/icons/navbar/postt.png"
           width={30}
           height={30}
           alt="post"
@@ -48,7 +48,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
       <Button>
         <Link href="../profile">
           <Image
-            src={"/assets/images/icons/navbar/profile.png"}
+            src={"/assets/images/icons/navbar/profilee.png"}
             width={30}
             height={30}
             alt="profile"
