@@ -47,6 +47,7 @@ export default function PostFeed({ posts, setPosts, closeModal }) {
             name="inputComment"
             id="inputComment"
             placeholder="Enter your comment"
+            autoComplete="off"
           />
         </CommentForm>
         <PostButton type="submit">Post</PostButton>
