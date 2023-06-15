@@ -50,7 +50,13 @@ const FreeText = styled.div`
 `;
 
 const PostButton = styled.button`
-  margin-top: 15px;
+  margin-top: 10px;
+  border-radius: 16px;
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
 `;
 
 const SongInfo = styled.div`

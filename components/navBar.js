@@ -18,14 +18,16 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
 
   return (
     <NavbarContainer>
-      {/* <Button>
-        <Image
-          src={"/assets/images/icons/navbar/home.png"}
-          width={30}
-          height={30}
-          alt="home"
-        />
-      </Button> */}
+      <Link href="/home">
+        <Button>
+          <Image
+            src={"/assets/images/icons/navbar/home.png"}
+            width={30}
+            height={30}
+            alt="home"
+          />
+        </Button>
+      </Link>
       <Button onClick={openModal}>
         <Image
           src={"/assets/images/icons/navbar/post.png"}
@@ -63,7 +65,7 @@ const NavbarContainer = styled.nav`
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: #f1f1f1;
+  background-color: #30d5c8;
   display: flex;
   justify-content: space-around;
   padding: 10px;
