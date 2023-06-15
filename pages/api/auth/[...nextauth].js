@@ -44,7 +44,7 @@ export default NextAuth({
       if (account && user) {
         return {
           ...token,
-          accessToken: account.access_toke,
+          accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
           accessTokenExpires: account.expires_at * 1000, // handle expiry time in milliseconds
