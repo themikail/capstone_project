@@ -33,7 +33,7 @@ export default function PostFeed({ posts, setPosts, closeModal, activeMusic }) {
           <SongCover src="" width={60} height={60} alt="music" />
         </SongInfo>
         <CommentForm>
-          <input
+          <textarea
             name="inputComment"
             id="inputComment"
             placeholder="Enter your comment"

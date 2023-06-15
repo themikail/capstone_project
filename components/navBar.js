@@ -33,7 +33,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
           src={"/assets/images/icons/navbar/post.png"}
           width={30}
           height={30}
-          alt="home"
+          alt="post"
         />
       </Button>
       <Modal isOpen={modalIsOpen} closeModal={closeModal}>
@@ -51,7 +51,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
             src={"/assets/images/icons/navbar/profile.png"}
             width={30}
             height={30}
-            alt="home"
+            alt="profile"
           />
         </Link>
       </Button>

@@ -1,36 +1,97 @@
 import { useSession, signOut } from "next-auth/react";
 import styled from "styled-components";
+import Image from "next/image";
 import Navbar from "@/components/navBar";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
 
-  {
-    return (
-      <ProfileContainer>
-        <Header>
-          <Avatar src="/Portrait_Placeholder.png" alt="Avatar" />
-          {/* <Username>{session.user.name}</Username> */}
-          <LogoutButton
-            type="button"
-            onClick={() => {
-              signOut({ callbackUrl: "/" });
-            }}
-          >
-            Logout
-          </LogoutButton>
-        </Header>
-        <FavoritesSection>
-          <h2>Meine Favoriten</h2>
-        </FavoritesSection>
-        <Player></Player>
-        <Navbar />
-      </ProfileContainer>
-    );
-  }
+  return (
+    <ProfileContainer>
+      <Header>
+        <Avatar src="/Portrait_Placeholder.png" alt="Avatar" />
+        <Username>username</Username>
+        <LogoutButton
+          type="button"
+          onClick={() => {
+            signOut({ callbackUrl: "/" });
+          }}
+        >
+          Logout
+        </LogoutButton>
+      </Header>
+      <FavoritesSection>
+        <h2>Meine Favoriten</h2>
+        <ImageRow>
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+        </ImageRow>
+        <ImageRow>
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+        </ImageRow>
+        <ImageRow>
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+          <RoundImage
+            src={"/assets/images/musicImage/bellki.jpeg"}
+            width={60}
+            height={60}
+            alt="music"
+          />
+        </ImageRow>
+      </FavoritesSection>
+      <Navbar />
+    </ProfileContainer>
+  );
 }
 
-const Player = styled.div``;
+const RoundImage = styled(Image)`
+  border-radius: 50%;
+  object-fit: cover;
+`;
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -74,4 +135,11 @@ const FavoritesSection = styled.div`
   text-align: center;
   color: #fff;
   background-color: #30d5c8;
+`;
+
+const ImageRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
 `;
