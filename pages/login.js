@@ -11,15 +11,16 @@ function Login({ providers }) {
         height={50}
       />
 
-      {Object.values(providers).map((provider) => (
-        <div>
-          <LoginButton
-            onClick={() => signIn(provider.id, { callbackUrl: "/" })}
-          >
-            Login with {provider.name}
-          </LoginButton>
-        </div>
-      ))}
+      {providers &&
+        Object.values(providers).map((provider) => (
+          <div>
+            <LoginButton
+              onClick={() => signIn(provider.id, { callbackUrl: "/" })}
+            >
+              Login with {provider.name}
+            </LoginButton>
+          </div>
+        ))}
     </StyledBody>
   );
 }
@@ -31,7 +32,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      providers,
+      providers: providers || {},
     },
   };
 }

@@ -54,7 +54,6 @@ const dummyPosts = [
 
 export default function Feed() {
   const { data: session, status } = useSession();
-  console.log(session);
   const [posts, setPosts] = useState(dummyPosts);
   const [activeMusic, setActiveMusic] = useState(dummyMusic);
 

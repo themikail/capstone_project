@@ -44,7 +44,7 @@ export default function Navbar({ posts, setPosts, imageCover, music }) {
         />
       </Modal>
       <Button>
-        <Link href="../components/profile">
+        <Link href="../profile">
           <Image
             src={"/assets/images/icons/navbar/profile.png"}
             width={30}

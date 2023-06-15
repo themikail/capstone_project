@@ -2,12 +2,13 @@ import { signOut, useSession } from "next-auth/react";
 
 function Profile() {
   const { data: session, status } = useSession();
-  console.log(session);
+
+  console.log(signOut);
   return (
     <div>
       <h1>Profile</h1>
 
-      <button onClick={() => signOut}>LogOut</button>
+      <button onClick={() => signOut()}>LogOut</button>
     </div>
   );
 }

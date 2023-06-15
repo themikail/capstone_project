@@ -7,7 +7,7 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Component {...pageProps} />
     </SessionProvider>
   );
