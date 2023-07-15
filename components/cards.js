@@ -121,6 +121,8 @@ export default function Cards({ posts, setPosts }) {
   const calculateLikeCount = (post) => {
     if (post && post.likes) {
       return post.likes;
+    } else if (post && post.likePhotos) {
+      return 1;
     }
     return 0;
   };
